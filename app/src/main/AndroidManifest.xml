@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bank">
-        <activity android:name=".SecPassword"></activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ApprovalNumberActivity" />
+        <activity android:name=".SecPasswordActiviity" />
         <activity android:name=".StartActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
