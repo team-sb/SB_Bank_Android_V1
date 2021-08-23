@@ -7,8 +7,11 @@
     android:background="#010A43"
     tools:context=".WithdrawActivity">
 
-    <ImageView
-        android:id="@+id/ib_wBack"
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:id="@+id/withDraw_ib_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -45,10 +48,10 @@
         android:text="New Withdraw"
         android:textColor="#D7C9C9"
         android:textSize="26dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ib_wBack"
+        app:layout_constraintBottom_toBottomOf="@+id/withDraw_ib_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ib_wBack" />
+        app:layout_constraintTop_toTopOf="@+id/withDraw_ib_back" />
 
     <TextView
         android:id="@+id/wTextView11"
@@ -62,12 +65,15 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="377dp" />
 
-    <ImageView
-        android:id="@+id/wImageView2"
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:id="@+id/ib_createNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/wImageView26"
+        app:layout_constraintBottom_toTopOf="@+id/ib_cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/pinkbox" />
@@ -78,13 +84,16 @@
         android:text="승인번호 생성"
         android:textColor="@color/white"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/wImageView2"
-        app:layout_constraintEnd_toEndOf="@+id/wImageView2"
-        app:layout_constraintStart_toStartOf="@+id/wImageView2"
-        app:layout_constraintTop_toTopOf="@+id/wImageView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/ib_createNum"
+        app:layout_constraintEnd_toEndOf="@+id/ib_createNum"
+        app:layout_constraintStart_toStartOf="@+id/ib_createNum"
+        app:layout_constraintTop_toTopOf="@+id/ib_createNum" />
 
-    <ImageView
-        android:id="@+id/wImageView26"
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:id="@+id/ib_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
@@ -99,10 +108,10 @@
         android:text="취소하기"
         android:textColor="#464E8A"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/wImageView26"
-        app:layout_constraintEnd_toEndOf="@+id/wImageView26"
-        app:layout_constraintStart_toStartOf="@+id/wImageView26"
-        app:layout_constraintTop_toTopOf="@+id/wImageView26" />
+        app:layout_constraintBottom_toBottomOf="@+id/ib_cancel"
+        app:layout_constraintEnd_toEndOf="@+id/ib_cancel"
+        app:layout_constraintStart_toStartOf="@+id/ib_cancel"
+        app:layout_constraintTop_toTopOf="@+id/ib_cancel" />
 
     <ImageView
         android:id="@+id/wImageView28"

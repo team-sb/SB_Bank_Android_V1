@@ -13,24 +13,25 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/el3" />
+        app:srcCompat="@drawable/iv_circle1" />
 
     <ImageView
         android:id="@+id/iv_blackCircle"
-        android:layout_width="406dp"
-        android:layout_height="318dp"
+        android:layout_width="400dp"
+        android:layout_height="305dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/el1" />
+        app:srcCompat="@drawable/iv_circle3" />
 
     <ImageView
         android:id="@+id/iv_yellowCircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/iv_blackCircle"
-        app:layout_constraintTop_toTopOf="@+id/iv_blackCircle"
-        app:srcCompat="@drawable/el2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/iv_circle2" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -7,8 +7,11 @@
     android:background="#010A43"
     tools:context=".SendActivity">
 
-    <ImageView
-        android:id="@+id/imageView11"
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:id="@+id/send_ib_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -45,30 +48,33 @@
         android:text="New Request"
         android:textColor="#D7C9C9"
         android:textSize="26dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+        app:layout_constraintBottom_toBottomOf="@+id/send_ib_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView11" />
+        app:layout_constraintTop_toTopOf="@+id/send_ib_back" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Name"
+        android:layout_marginTop="20dp"
+        android:text="받는 분"
         android:textColor="#EEEEEE"
         android:textSize="32dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView17"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="@+id/imageView17"
         app:layout_constraintTop_toBottomOf="@+id/imageView17" />
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="96dp"
+        android:layout_height="26dp"
         android:layout_marginTop="16dp"
-        android:text="is requesting for:"
+        android:text="01087573315"
         android:textColor="#EEEEEE"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="@+id/textView9"
         app:layout_constraintStart_toStartOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -86,18 +92,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-    <ImageView
-        android:id="@+id/imageView21"
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:id="@+id/send_ib_sendMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView26"
+        app:layout_constraintBottom_toTopOf="@+id/send_ib_cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ib_send" />
 
-    <ImageView
-        android:id="@+id/imageView26"
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:id="@+id/send_ib_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
