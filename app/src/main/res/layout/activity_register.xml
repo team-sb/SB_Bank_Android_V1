@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#58BFE6"
+    android:background="#3A4187"
     tools:context=".RegisterActivity">
 
     <ImageView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/whitecircle" />
+        app:srcCompat="@drawable/circle2" />
 
     <ImageView
         android:id="@+id/iv_blackCIrcle"
@@ -24,7 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/blackcircle" />
+        app:srcCompat="@drawable/circle1" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -33,8 +33,8 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="120dp"
         android:fontFamily="@font/bmdohyun"
-        android:text="Create\nAccount"
-        android:textColor="@color/white"
+        android:text="SB Bank\n  회원가입"
+        android:textColor="#EEEEEE"
         android:textSize="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,14 +44,15 @@
         android:layout_width="303dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded2"
-        android:hint="   Name (including student num)"
+        android:hint="닉네임"
+        android:paddingLeft="20dp"
         android:inputType="textPersonName"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.466" />
+        app:layout_constraintVertical_bias="0.428" />
 
     <EditText
         android:id="@+id/et_RegisterId"
@@ -59,7 +60,8 @@
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/rounded2"
-        android:hint="   Your ID"
+        android:hint="아이디"
+        android:paddingLeft="20dp"
         android:inputType="textPersonName"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/et_RegisterName"
@@ -74,17 +76,34 @@
         android:layout_height="50dp"
         android:background="@drawable/rounded2"
         android:layout_marginTop="15dp"
-        android:hint="   Password"
+        android:hint="비밀번호"
+        android:paddingLeft="20dp"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/et_RegisterId"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/et_RegisterId"
         app:layout_constraintTop_toBottomOf="@+id/et_RegisterId" />
 
+    <EditText
+        android:id="@+id/et_secPassword"
+        android:layout_width="303dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded2"
+        android:hint="2차 비밀번호 (숫자 4자리)"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/et_RegisterPw"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_RegisterPw"
+        app:layout_constraintTop_toBottomOf="@+id/et_RegisterPw" />
+
     <TextView
         android:id="@+id/tv_signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#EEEEEE"
         android:layout_marginBottom="160dp"
         android:fontFamily="@font/bmdohyun"
         android:text="Sign Up"
@@ -116,13 +135,14 @@
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/iv_whiteCircle"
-        app:srcCompat="@drawable/rectangle" />
+        app:srcCompat="@drawable/blackbox2" />
 
     <TextView
         android:id="@+id/tv_signIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign In"
+        android:textColor="#EEEEEE"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="@+id/imageView5" />
