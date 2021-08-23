@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class SecPasswordActiviity extends AppCompatActivity {
 
+    public static String secPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
