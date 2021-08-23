@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class SecPassword extends AppCompatActivity {
+public class SecPasswordActiviity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
