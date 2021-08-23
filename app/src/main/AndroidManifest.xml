@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bank">
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".MyPageActivity"></activity>
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".SendDataActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".ApprovalNumberActivity" />
         <activity android:name=".SecPasswordActiviity" />
