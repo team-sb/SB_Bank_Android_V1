@@ -45,7 +45,7 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/et_accountNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -73,9 +73,11 @@
         app:srcCompat="@drawable/blackbox" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/tv_finish"
+        android:layout_width="172dp"
+        android:layout_height="60dp"
         android:text="입력 완료"
+        android:gravity="center"
         android:textColor="#464E8A"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/ib_finish"
