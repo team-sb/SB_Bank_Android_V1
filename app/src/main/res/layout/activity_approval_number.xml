@@ -98,8 +98,10 @@
         app:srcCompat="@drawable/pinkbox" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/approvalNumber_tv_check"
+        android:layout_width="174dp"
+        android:layout_height="58dp"
+        android:gravity="center"
         android:text="확인"
         android:textColor="@color/white"
         android:textSize="20dp"
