@@ -7,8 +7,11 @@
     android:background="#010A43"
     tools:context=".TransactionDetailsActivity">
 
-    <ImageView
-        android:id="@+id/imageView9"
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:id="@+id/transactionDetails_ib_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
