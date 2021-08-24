@@ -99,17 +99,19 @@
         app:layout_constraintStart_toStartOf="@+id/imageView10"
         app:layout_constraintTop_toTopOf="@+id/imageView10" />
 
-    <Spinner
-        android:id="@+id/sp_transactionDetails"
+    <TextView
+        android:id="@+id/tv_transactionDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:entries="@array/TransactionDetail"
+        android:text="전체"
+        android:textSize="16dp"
+        android:textColor="#EEEEEE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view">
 
-    </Spinner>
+    </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_transactionDetails"
