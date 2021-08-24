@@ -35,21 +35,21 @@ public interface ServerAPI {
 
     // MainPage
 
-    @GET("user/balance/{user-id}") // 잔액 표시
-    Call<MainPageRequest> balanceUser(@Header("Authorization") String token, @Path("user-id") int user_id);
+    @GET("user/balance") // 잔액 표시
+    Call<MainPageRequest> balanceUser(@Header("Authorization") String token);
 
-    @GET("user/loan/{user-id}") // 대출 현황
-    Call<MainPageRequest> loanUser(@Header("Authorization") String token, @Path("user-id") int user_id);
+    @GET("user/loan") // 대출 현황
+    Call<MainPageRequest> loanUser(@Header("Authorization") String token);
 
-    @GET("user/credit/{user-id}") // 신용 등급
-    Call<MainPageRequest> creditUser(@Header("Authorization") String token, @Path("user-id") int user_id);
+    @GET("user/credit") // 신용 등급
+    Call<MainPageRequest> creditUser(@Header("Authorization") String token);
 
-    @GET("user/transaction/{user-id}") // 거래 내역(전체)
-    Call<MainPageRequest> transactionUser(@Header("Authorization") String token, @Path("user-id") int user_id);
+    @GET("user/transaction") // 거래 내역(전체)
+    Call<MainPageRequest> transactionUser(@Header("Authorization") String token);
 
-    @GET("user/transaction/send/{user-id}") // 거래 내역(입금)
-    Call<MainPageRequest> transactionSendUser(@Header("Authorization") String token, @Path("user-id") int user_id);
+    @GET("user/transaction/send") // 거래 내역(입금)
+    Call<MainPageRequest> transactionSendUser(@Header("Authorization") String token);
 
-    @GET("user/transaction/receive/{user-id}") // 거래 내역(출금)
-    Call<MainPageRequest> transactionReceiveUser(@Header("Authorization") String token, @Path("user-id") int user_id);
+    @GET("user/transaction/receive") // 거래 내역(출금)
+    Call<MainPageRequest> transactionReceiveUser(@Header("Authorization") String token);
 }
