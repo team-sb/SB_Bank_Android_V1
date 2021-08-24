@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#010A43"
+    tools:context=".DepositActivity">
+
+    <ImageButton
+        android:id="@+id/deposit_ib_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ig_back" />
+
+    <ImageView
+        android:id="@+id/dimageView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.329"
+        app:srcCompat="@drawable/profilec1" />
+
+    <ImageView
+        android:id="@+id/dimageView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/dimageView17"
+        app:layout_constraintEnd_toEndOf="@+id/dimageView17"
+        app:layout_constraintStart_toStartOf="@+id/dimageView17"
+        app:layout_constraintTop_toTopOf="@+id/dimageView17"
+        app:srcCompat="@drawable/profilec2" />
+
+    <TextView
+        android:id="@+id/deposit_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ATM 입금"
+        android:textColor="#D7C9C9"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toBottomOf="@+id/deposit_ib_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/deposit_ib_back" />
+
+    <TextView
+        android:id="@+id/dtextView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="200,000 원"
+        android:textColor="#EEEEEE"
+        android:textSize="48dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dimageView17" />
+
+    <ImageButton
+        android:id="@+id/deposit_ib_deposit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/deposit_ib_cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/pinkbox" />
+
+    <ImageButton
+        android:id="@+id/deposit_ib_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/blackbox" />
+
+    <ImageView
+        android:id="@+id/dimageView28"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dimageView17"
+        app:layout_constraintEnd_toEndOf="@+id/dimageView17"
+        app:layout_constraintStart_toStartOf="@+id/dimageView17"
+        app:layout_constraintTop_toTopOf="@+id/dimageView17"
+        app:srcCompat="@drawable/app_logo" />
+
+    <TextView
+        android:id="@+id/tv_deposit"
+        android:layout_width="174dp"
+        android:layout_height="62dp"
+        android:text="입금하기"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/deposit_ib_deposit"
+        app:layout_constraintEnd_toEndOf="@+id/deposit_ib_deposit"
+        app:layout_constraintStart_toStartOf="@+id/deposit_ib_deposit"
+        app:layout_constraintTop_toTopOf="@+id/deposit_ib_deposit" />
+
+    <TextView
+        android:id="@+id/tv_depositCancel"
+        android:layout_width="174dp"
+        android:layout_height="59dp"
+        android:text="입금취소"
+        android:gravity="center"
+        android:textColor="#464E8A"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/deposit_ib_cancel"
+        app:layout_constraintEnd_toEndOf="@+id/deposit_ib_cancel"
+        app:layout_constraintStart_toStartOf="@+id/deposit_ib_cancel"
+        app:layout_constraintTop_toTopOf="@+id/deposit_ib_cancel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
