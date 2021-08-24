@@ -1,15 +1,23 @@
 package com.example.bank;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,10 +25,50 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_makeAccount;
     TextView tv_qrCheck;
 
+    ImageButton ib_menu;
+
+    DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.main_drawerLayout);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                item.setChecked(true);
+                drawerLayout.closeDrawer(GravityCompat.START);
+
+                int menuId = item.getItemId();
+
+                if(menuId == R.id.menu_myPage) {
+                    startActivity(new Intent(MainActivity.this, MyPageActivity.class));
+                } else if(menuId == R.id.menu_send) {
+                    startActivity(new Intent(MainActivity.this, DepositActivity.class));
+                } else if(menuId == R.id.menu_sendAccount) {
+                    startActivity(new Intent(MainActivity.this, SendActivity.class));
+                } else if(menuId == R.id.menu_withDraw) {
+                    startActivity(new Intent(MainActivity.this, WithdrawActivity.class));
+                }
+
+                return true;
+            }
+        });
+
+        ib_menu = (ImageButton) findViewById(R.id.ib_menu);
+        ib_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(drawerLayout.isDrawerOpen(Gravity.LEFT)) {
+                    drawerLayout.closeDrawer(Gravity.LEFT);
+                } else {
+                    drawerLayout.openDrawer(Gravity.LEFT);
+                }
+            }
+        });
 
         tv_price = (TextView) findViewById(R.id.tv_price);
         tv_price.setOnClickListener(new View.OnClickListener() {
