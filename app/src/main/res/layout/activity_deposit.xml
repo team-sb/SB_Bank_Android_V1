@@ -54,12 +54,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/deposit_ib_back" />
 
-    <TextView
-        android:id="@+id/dtextView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="200,000 원"
+    <EditText
+        android:id="@+id/deposit_et_money"
+        android:layout_width="230dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        android:text="0"
         android:textColor="#EEEEEE"
         android:textSize="48dp"
         android:textStyle="bold"
