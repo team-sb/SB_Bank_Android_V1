@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,11 +28,22 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton ib_menu;
 
+    Button temp2;
+
     DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // 임시 2차 비밀번호 이동
+        temp2 = (Button) findViewById(R.id.temp2);
+        temp2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SecPasswordActiviity.class));
+            }
+        });
 
         drawerLayout = (DrawerLayout) findViewById(R.id.main_drawerLayout);
 
