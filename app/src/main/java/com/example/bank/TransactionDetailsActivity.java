@@ -1,7 +1,10 @@
 package com.example.bank;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.LauncherActivity;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -9,38 +12,46 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class TransactionDetailsActivity extends AppCompatActivity {
 
-    Spinner sp_transactionDetails;
     String transactionSelect;
+    TextView tv_transactionDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_details);
 
-        sp_transactionDetails = (Spinner) findViewById(R.id.sp_transactionDetails);
-
-        sp_transactionDetails.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        tv_transactionDetails = (TextView) findViewById(R.id.tv_transactionDetails);
+        tv_transactionDetails.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView)parent.getChildAt(position)).setTextColor(Color.WHITE);
+            public void onClick(View v) {
+                List<String> listItems = new ArrayList<>();
+                listItems.add("전체");
+                listItems.add("출금");
+                listItems.add("입금");
+                CharSequence[] items = listItems.toArray(new String[listItems.size()]);
 
-                transactionSelect = parent.getItemAtPosition(position).toString();
-                if(Objects.equals(transactionSelect, "전체")) {
-                    detailAll();
-                } else if(Objects.equals(transactionSelect, "입금")) {
-                    detailSend();
-                } else if(Objects.equals(transactionSelect, "출금")) {
-                    detailReceive();
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+                AlertDialog.Builder builder = new AlertDialog.Builder(TransactionDetailsActivity.this);
+                builder.setTitle("거래 내역 선택");
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String selectedText = items[which].toString();
+                        if(Objects.equals(selectedText, "전체")) {
+                            detailAll();
+                        } else if(Objects.equals(selectedText, "입금")) {
+                            detailDeposit();
+                        } else if(Objects.equals(selectedText, "출금")) {
+                            detailWithDraw();
+                        }
+                    }
+                });
+                builder.show();
             }
         });
     }
@@ -48,10 +59,10 @@ public class TransactionDetailsActivity extends AppCompatActivity {
     private void detailAll() {
 
     }
-    private void detailSend() {
+    private void detailDeposit() {
 
     }
-    private void detailReceive() {
+    private void detailWithDraw() {
 
     }
 }
