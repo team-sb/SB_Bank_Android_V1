@@ -106,8 +106,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/ib_check"
         app:layout_constraintEnd_toEndOf="@+id/ib_check"
         app:layout_constraintStart_toStartOf="@+id/ib_check"
-        app:layout_constraintTop_toTopOf="@+id/ib_check"
-        app:layout_constraintTop_toTopf="@+id/imageView40" />
+        app:layout_constraintTop_toTopOf="@+id/ib_check" />
 
     <ImageButton
         android:adjustViewBounds="true"
