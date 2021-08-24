@@ -17,10 +17,9 @@
 
     <ImageView
         android:id="@+id/iv_blackCircle"
-        android:layout_width="400dp"
-        android:layout_height="305dp"
+        android:layout_width="473dp"
+        android:layout_height="333dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/iv_circle3" />
