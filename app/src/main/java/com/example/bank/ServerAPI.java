@@ -19,38 +19,41 @@ public interface ServerAPI {
     @POST("auth/join") // 회원가입
     Call<RegisterResponse> Register(@Body RegisterRequest registerRequest);
 
-    @POST("auth/sec-login") // 2차 비밀번호
-    Call<SecPasswordResponse> SecLogin(@Body String sec_password);
+    @POST("auth/sec-login") // 2차 로그인
+    Call<SecPasswordResponse> SecLogin(@Body int sec_password);
 
-    @POST("user/password") // 비밀번호 수정
+    @POST("auth/password") // 비밀번호 수정
     Call<Void> PasswordChange(@Body String password, @Body String new_password);
 
     // Account
 
     @POST("account/register") // 계좌 생성
-    Call<AccountRequest> registerAccount(@Header("Authorization") String token, @Body String sec_password);
+    Call<AccountResponse> createAccount(@Header("Authorization") String token);
 
     @POST("account/charge") // 입출금
-    Call<Void> chargeAccount(@Header("Authorization") String token, @Body String sec_password, @Body String money);
+    Call<Void> chargeAccount(@Header("Authorization") String token, @Body int money);
 
     @POST("account/transfer") // 계좌이체
-    Call<AccountRequest> transferAccount(@Header("Authorization") String token, @Body String sec_password, @Body String money, @Body String target);
+    Call<Void> transferAccount(@Header("Authorization") String token, @Body String money, @Body String target);
 
     @POST("account/borrow") // 대출
-    Call<AccountRequest> borrowAccount(@Header("Authorization") String token, @Body String sec_password, @Body String money);
-
-    // UserPage
-
-    @GET("user/balance") // 잔액 표시
-    Call<UserBalanceResponse> UserBalance(@Header("Authorization") String token);
-
-    @GET("user/loan") // 잔액 표시
-    Call<UserLoanResponse> UserLoan(@Header("Authorization") String token);
-
-    @GET("user/credit") // 잔액 표시
-    Call<UserCreditResponse> UserCredit(@Header("Authorization") String token);
+    Call<AccountBorrowResponse> borrowAccount(@Header("Authorization") String token, @Body String money);
 
     // MainPage
+
+    @GET("user/balance") // 잔액 표시
+    Call<UserBalanceResponse> balanceMain(@Header("Authorization") String token);
+
+    @GET("user/transaction") // 거래 내역(전체)
+    Call<MainPageRequest> transactionMain(@Header("Authorization") String token);
+
+    @GET("user/transaction/send") // 거래 내역(입금)
+    Call<MainPageRequest> transactionSendMain(@Header("Authorization") String token);
+
+    @GET("user/transaction/receive") // 거래 내역(출금)
+    Call<MainPageRequest> transactionReceiveMain(@Header("Authorization") String token);
+
+    // UserPage
 
     @GET("user/balance") // 잔액 표시
     Call<MainPageRequest> balanceUser(@Header("Authorization") String token);
