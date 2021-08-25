@@ -26,15 +26,34 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_makeAccount;
     TextView tv_qrCheck;
 
+    ImageButton ib_sendMoney;
     ImageButton ib_menu;
 
     Button temp2;
+    Button tempw;
 
     DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ib_sendMoney = (ImageButton) findViewById(R.id.ib_sendMoney);
+        ib_sendMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SendDataActivity.class));
+            }
+        });
+
+        // 임시 출금 이동
+        tempw = (Button) findViewById(R.id.tempw);
+        tempw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, WithdrawActivity.class));
+            }
+        });
 
         // 임시 2차 비밀번호 이동
         temp2 = (Button) findViewById(R.id.temp2);
@@ -61,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if(menuId == R.id.menu_send) {
                     startActivity(new Intent(MainActivity.this, DepositActivity.class));
                 } else if(menuId == R.id.menu_sendAccount) {
-                    startActivity(new Intent(MainActivity.this, SendActivity.class));
+                    startActivity(new Intent(MainActivity.this, SendDataActivity.class));
                 } else if(menuId == R.id.menu_withDraw) {
                     startActivity(new Intent(MainActivity.this, WithdrawActivity.class));
                 }
