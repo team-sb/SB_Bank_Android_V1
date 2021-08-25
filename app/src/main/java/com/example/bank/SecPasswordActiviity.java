@@ -32,6 +32,8 @@ public class SecPasswordActiviity extends AppCompatActivity {
     ImageView ig_d3;
     ImageView ig_d4;
 
+    ImageButton secPassword_ib_back;
+
     int clickNum;
     String secPwArr[] = new String[5];
     public static int secPw;
@@ -40,6 +42,14 @@ public class SecPasswordActiviity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sec_password);
+
+        secPassword_ib_back = (ImageButton) findViewById(R.id.secPassword_ib_back);
+        secPassword_ib_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         tv_one = (TextView) findViewById(R.id.tv_one);
         tv_two = (TextView) findViewById(R.id.tv_two);
