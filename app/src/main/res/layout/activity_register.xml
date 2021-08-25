@@ -17,8 +17,8 @@
 
     <ImageView
         android:id="@+id/iv_blackCIrcle"
-        android:layout_width="448dp"
-        android:layout_height="306dp"
+        android:layout_width="455dp"
+        android:layout_height="325dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,14 +45,14 @@
         android:layout_height="50dp"
         android:background="@drawable/rounded2"
         android:hint="닉네임"
-        android:paddingLeft="20dp"
         android:inputType="textPersonName"
+        android:paddingLeft="20dp"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.428" />
+        app:layout_constraintVertical_bias="0.442" />
 
     <EditText
         android:id="@+id/et_RegisterId"
