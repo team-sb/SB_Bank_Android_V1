@@ -8,8 +8,13 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SecPasswordActiviity extends AppCompatActivity {
 
@@ -37,6 +42,7 @@ public class SecPasswordActiviity extends AppCompatActivity {
     int clickNum;
     String secPwArr[] = new String[5];
     public static int secPw;
+    public static boolean secSuccess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,7 +199,28 @@ public class SecPasswordActiviity extends AppCompatActivity {
     }
 
     private void certified() {
-        // 맞는지 틀린지 검사
-        finish();
+        ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
+
+        Call<SecPasswordResponse> call = serverAPI.SecLogin(secPw);
+
+        call.enqueue(new Callback<SecPasswordResponse>() {
+            @Override
+            public void onResponse(Call<SecPasswordResponse> call, Response<SecPasswordResponse> response) {
+                int result = response.code();
+                if(result == 200) {
+                    UserData.sec_token = response.body().getSecToken();
+                    UserData.temp_token = UserData.sec_token;
+                    secSuccess = true;
+                    Toast.makeText(SecPasswordActiviity.this, "2차 로그인 성공", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else if (result == 401) {
+                    Toast.makeText(SecPasswordActiviity.this, "2차 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SecPasswordResponse> call, Throwable t) {
+            }
+        });
     }
 }
