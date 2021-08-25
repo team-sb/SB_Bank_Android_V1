@@ -6,6 +6,13 @@ public class RegisterRequest {
     String password;
     String sec_password;
 
+    public RegisterRequest(String name, String username, String password, String sec_password) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.sec_password = sec_password;
+    }
+
     public String getName() {
         return name;
     }
