@@ -13,11 +13,17 @@ public interface ServerAPI {
 
     // Auth
 
-    @POST("login") // 로그인
+    @POST("auth/login") // 로그인
     Call<LoginResponse> Login(@Body LoginRequest loginRequest);
 
-    @POST("join") // 회원가입
+    @POST("auth/join") // 회원가입
     Call<RegisterResponse> Register(@Body RegisterRequest registerRequest);
+
+    @POST("auth/sec-login") // 2차 비밀번호
+    Call<SecPasswordResponse> SecLogin(@Body String sec_password);
+
+    @POST("user/password") // 비밀번호 수정
+    Call<Void> PasswordChange(@Body String password, @Body String new_password);
 
     // Account
 
@@ -25,13 +31,24 @@ public interface ServerAPI {
     Call<AccountRequest> registerAccount(@Header("Authorization") String token, @Body String sec_password);
 
     @POST("account/charge") // 입출금
-    Call<AccountRequest> chargeAccount(@Header("Authorization") String token, @Body String sec_password, @Body String money);
+    Call<Void> chargeAccount(@Header("Authorization") String token, @Body String sec_password, @Body String money);
 
     @POST("account/transfer") // 계좌이체
     Call<AccountRequest> transferAccount(@Header("Authorization") String token, @Body String sec_password, @Body String money, @Body String target);
 
     @POST("account/borrow") // 대출
     Call<AccountRequest> borrowAccount(@Header("Authorization") String token, @Body String sec_password, @Body String money);
+
+    // UserPage
+
+    @GET("user/balance") // 잔액 표시
+    Call<UserBalanceResponse> UserBalance(@Header("Authorization") String token);
+
+    @GET("user/loan") // 잔액 표시
+    Call<UserLoanResponse> UserLoan(@Header("Authorization") String token);
+
+    @GET("user/credit") // 잔액 표시
+    Call<UserCreditResponse> UserCredit(@Header("Authorization") String token);
 
     // MainPage
 
