@@ -50,18 +50,18 @@ public class SendDataActivity extends AppCompatActivity {
             public void onClick(View v) {
                 accountNum = et_accountNum.getText().toString();
                 if(!(accountNum == null || Objects.equals(accountNum, ""))) {
-                    depositSend();
+                    startActivity(new Intent(SendDataActivity.this, SendActivity.class));
                 }
             }
         });
 
     }
 
-    private void depositSend() {
+/*    private void depositSend() {
 
         ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
-        Call<Void> call = serverAPI.chargeAccount(UserData.temp_token, accountNum);
+        Call<Void> call = serverAPI.transferAccount(UserData.temp_token, accountNum);
 
         call.enqueue(new Callback<Void>() {
             @Override
@@ -94,5 +94,5 @@ public class SendDataActivity extends AppCompatActivity {
         super.onResume();
 
         depositSend();
-    }
+    }*/
 }
