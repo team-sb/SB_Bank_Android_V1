@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,7 +12,7 @@
         android:background="#192259">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/tv_transactionDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
@@ -27,7 +26,7 @@
             app:layout_constraintVertical_bias="0.358" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/tv_transactionName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
@@ -35,45 +34,57 @@
             android:textColor="#858EC5"
             android:textSize="16dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textView6"
-            app:layout_constraintStart_toEndOf="@+id/textView6"
-            app:layout_constraintTop_toTopOf="@+id/textView6"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_transactionDate"
+            app:layout_constraintStart_toEndOf="@+id/tv_transactionDate"
+            app:layout_constraintTop_toTopOf="@+id/tv_transactionDate"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/tv_transactionTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
-            android:text="16:40 | SEND"
+            android:text="16:40"
             android:textColor="#CE858EC5"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView7" />
+            app:layout_constraintEnd_toEndOf="@+id/tv_transactionName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_transactionName"
+            app:layout_constraintTop_toBottomOf="@+id/tv_transactionName" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/tv_transactionMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="64dp"
             android:text="-0원"
             android:textColor="#BE1DC7AC"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textView7"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_transactionName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView7"
+            app:layout_constraintTop_toTopOf="@+id/tv_transactionName"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/textView29"
+            android:id="@+id/tv_transactionPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="20,000 원"
             android:textColor="#1DC7AC"
-            app:layout_constraintBottom_toBottomOf="@+id/textView11"
-            app:layout_constraintEnd_toEndOf="@+id/textView14"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_transactionTime"
+            app:layout_constraintEnd_toEndOf="@+id/tv_transactionMoney"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/textView14"
-            app:layout_constraintTop_toTopOf="@+id/textView11"
+            app:layout_constraintStart_toStartOf="@+id/tv_transactionMoney"
+            app:layout_constraintTop_toTopOf="@+id/tv_transactionTime"
             app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/iv_transactionType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="104dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_transactionTime"
+            app:layout_constraintEnd_toStartOf="@+id/tv_transactionMoney"
+            app:layout_constraintTop_toTopOf="@+id/tv_transactionName"
+            app:layout_constraintVertical_bias="0.615"
+            app:srcCompat="@drawable/sent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
