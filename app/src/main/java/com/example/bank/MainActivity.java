@@ -20,11 +20,16 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView tv_price;
     TextView tv_makeAccount;
     TextView tv_qrCheck;
+    TextView tv_name;
 
     ImageButton ib_sendMoney;
     ImageButton ib_menu;
@@ -140,6 +145,37 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://nid.naver.com/login/qrCheckIn")));
+            }
+        });
+
+        tv_name = (TextView) findViewById(R.id.tv_name);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        getBalance();
+    }
+
+    private void getBalance() {
+
+        ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
+
+        retrofit2.Call<UserBalanceResponse> call = serverAPI.balanceMain(UserData.temp_token);
+
+        call.enqueue(new Callback<UserBalanceResponse>() {
+            @Override
+            public void onResponse(Call<UserBalanceResponse> call, Response<UserBalanceResponse> response) {
+                if(response.code() == 200) {
+                    tv_price.setText(response.body().getBalance());
+                    tv_name.setText(response.body().getName());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserBalanceResponse> call, Throwable t) {
+
             }
         });
     }
