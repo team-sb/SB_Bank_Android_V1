@@ -1,22 +1,17 @@
 package com.example.bank;
 
+import com.google.gson.JsonObject;
+
+import java.util.List;
+
 public class UserLoanResponse {
-    String count;
-    String money;
+    List<JsonObject> loans;
 
-    public String getCount() {
-        return count;
+    public List<JsonObject> getLoans() {
+        return loans;
     }
 
-    public void setCount(String count) {
-        this.count = count;
-    }
-
-    public String getMoney() {
-        return money;
-    }
-
-    public void setMoney(String money) {
-        this.money = money;
+    public void setLoans(List<JsonObject> loans) {
+        this.loans = loans;
     }
 }
