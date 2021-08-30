@@ -1,13 +1,20 @@
 package com.example.bank;
 
+import com.example.bank.Account.activity.AccountBorrowResponse;
+import com.example.bank.Account.data.AccountResponse;
+import com.example.bank.Auth.data.LoginRequest;
+import com.example.bank.Auth.data.LoginResponse;
+import com.example.bank.Auth.data.RegisterRequest;
+import com.example.bank.Auth.data.RegisterResponse;
+import com.example.bank.Auth.data.SecPasswordResponse;
+import com.example.bank.Main.data.MainPageRequest;
+import com.example.bank.User.data.UserBalanceResponse;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 
 public interface ServerAPI {
 

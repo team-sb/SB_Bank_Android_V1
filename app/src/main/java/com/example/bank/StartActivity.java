@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.bank.Main.activity.MainActivity;
+
 public class StartActivity extends AppCompatActivity {
 
     ImageButton ib_startBanking;
