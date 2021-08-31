@@ -26,6 +26,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     TextView tv_check;
     TextView tv_newAccount;
 
+    public static Boolean accountExist = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +57,9 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
-        Call<AccountResponse> call = serverAPI.createAccount(UserData.temp_token);
+        String bearerUserToken = "Bearer " + UserData.temp_token;
+
+        Call<AccountResponse> call = serverAPI.createAccount(bearerUserToken);
 
         call.enqueue(new Callback<AccountResponse>() {
             @Override
@@ -63,12 +67,13 @@ public class CreateAccountActivity extends AppCompatActivity {
                 int result = response.code();
 
                 if(result == 201) { // 성공
+                    Toast.makeText(CreateAccountActivity.this, "계좌 생성이 완료되었습니다!", Toast.LENGTH_SHORT).show();
                     UserData.temp_token = UserData.user_token;
                     tv_newAccount.setText(response.body().getAccount());
-                } else if (result == 403) { // 2차 인증
-                    secCertified();
-                } else if (result == 401) {
-                    Toast.makeText(CreateAccountActivity.this, "Token이 유효하지 않습니다.", Toast.LENGTH_SHORT).show();
+
+                    accountExist = true;
+                } else { // 2차 인증
+                    Toast.makeText(CreateAccountActivity.this, "ERROR : 페이지를 새로고침 해주세요", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -78,10 +83,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void secCertified() {
-        startActivity(new Intent(CreateAccountActivity.this, SecPasswordActiviity.class));
     }
 
     @Override

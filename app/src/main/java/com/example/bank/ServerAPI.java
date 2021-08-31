@@ -27,7 +27,7 @@ public interface ServerAPI {
     Call<Void> Register(@Body RegisterRequest registerRequest);
 
     @POST("auth/sec-login") // 2차 로그인
-    Call<SecPasswordResponse> SecLogin(@Body int sec_password);
+    Call<SecPasswordResponse> SecLogin(@Header("Authorization") String token, @Body String sec_password);
 
     @POST("auth/password") // 비밀번호 수정
     Call<Void> PasswordChange(@Body String password, @Body String new_password);
