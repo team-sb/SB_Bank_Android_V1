@@ -1,8 +1,8 @@
 package com.example.bank.User.data;
 
 public class UserBalanceResponse {
-    String name;
     String balance;
+    String name;
 
     public String getName() {
         return name;

@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.bank.Account.activity.CreateAccountActivity;
 import com.example.bank.Account.activity.DepositActivity;
+import com.example.bank.Account.data.AccountResponse;
 import com.example.bank.ApiProvider;
 import com.example.bank.Auth.activity.SecPasswordActiviity;
 import com.example.bank.User.activity.MyPageActivity;
@@ -56,10 +57,20 @@ public class MainActivity extends AppCompatActivity {
 
     String tempActivityName;
 
+    public static String accountNum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button btn_balance = (Button) findViewById(R.id.btn_balance);
+        btn_balance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getBalance();
+            }
+        });
 
         ib_sendMoney = (ImageButton) findViewById(R.id.ib_sendMoney);
         ib_sendMoney.setOnClickListener(new View.OnClickListener() {
@@ -178,39 +189,71 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(CreateAccountActivity.accountExist) {
-            Toast.makeText(MainActivity.this, "계좌가 이미 존재합니다.", Toast.LENGTH_SHORT).show();
 
-            return;
+         getBalance();
+
+        if(SecPasswordActiviity.secSuccess) { // 계좌 생성
+
+            ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
+
+            String bearerUserToken = "Bearer " + UserData.temp_token;
+
+            Call<AccountResponse> call = serverAPI.createAccount(bearerUserToken);
+
+            call.enqueue(new Callback<AccountResponse>() {
+                @Override
+                public void onResponse(Call<AccountResponse> call, Response<AccountResponse> response) {
+                    int result = response.code();
+
+                    if(result == 201) { // 성공
+                        Toast.makeText(MainActivity.this, "계좌 생성이 완료되었습니다!", Toast.LENGTH_SHORT).show();
+
+                        UserData.temp_token = UserData.user_token;
+                        SecPasswordActiviity.secSuccess = false;
+
+                        accountNum = response.body().getAccount();
+
+                        startActivity(new Intent(MainActivity.this, CreateAccountActivity.class));
+
+                    } else if (result == 409) {
+                        Toast.makeText(MainActivity.this, "계좌가 이미 있습니다.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "예기치 못한 오류가 발생했습니다.\n고객센터에 문의해주세요.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<AccountResponse> call, Throwable t) {
+                    Toast.makeText(MainActivity.this, "예기치 못한 오류가 발생했습니다.\n고객센터에 문의해주세요.", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
-
-        if(Objects.equals(tempActivityName, "CreateAccountActivity")) {
-            startActivity(new Intent(MainActivity.this, CreateAccountActivity.class));
-        }
-        getBalance(); // 기본 정보 세팅
-
 
     }
 
     private void getBalance() {
-
         ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
-        Call<UserBalanceResponse> call = serverAPI.balanceMain(UserData.user_token);
+        String bearerUserToken = "Bearer " + UserData.user_token;
+
+        Call<UserBalanceResponse> call = serverAPI.balanceMain(bearerUserToken);
 
         call.enqueue(new Callback<UserBalanceResponse>() {
             @Override
             public void onResponse(Call<UserBalanceResponse> call, Response<UserBalanceResponse> response) {
-                if(response.code() == 200) {
+                if (response.code() == 200) {
                     tv_price.setText(response.body().getBalance());
                     tv_name.setText(response.body().getName());
                 }
-                Log.d(TAG, "onResponse: ");
+                if (response.code() == 404) {
+                    Toast.makeText(MainActivity.this, "계좌가 존재하지 않습니다.\n우측 상단 \"계좌 생성\" 버튼을 클릭하여 계좌를 생성해주세요.", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailure(Call<UserBalanceResponse> call, Throwable t) {
-
+                Toast.makeText(MainActivity.this, "예기치 못한 오류가 발생했습니다.\n고객센터에 문의해주세요.", Toast.LENGTH_SHORT).show();
             }
         });
     }
