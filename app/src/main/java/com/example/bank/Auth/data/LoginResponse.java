@@ -1,13 +1,13 @@
 package com.example.bank.Auth.data;
 
 public class LoginResponse {
-    String token;
+    String accessToken;
 
-    public String getToken() {
-        return token;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 }
