@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.bank.Auth.activity.LoginActivity;
 import com.example.bank.Main.activity.MainActivity;
 
 public class StartActivity extends AppCompatActivity {
@@ -23,7 +24,7 @@ public class StartActivity extends AppCompatActivity {
         ib_startBanking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StartActivity.this, MainActivity.class));
+                startActivity(new Intent(StartActivity.this, LoginActivity.class));
             }
         });
     }

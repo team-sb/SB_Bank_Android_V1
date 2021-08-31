@@ -219,7 +219,7 @@ public class SecPasswordActiviity extends AppCompatActivity {
                     Toast.makeText(SecPasswordActiviity.this, "2차 로그인 성공", Toast.LENGTH_SHORT).show();
                     finish();
                 } else if (result == 401) {
-                    Toast.makeText(SecPasswordActiviity.this, "2차 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecPasswordActiviity.this, "2차 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
 

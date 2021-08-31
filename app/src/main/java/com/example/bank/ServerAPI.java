@@ -24,7 +24,7 @@ public interface ServerAPI {
     Call<LoginResponse> Login(@Body LoginRequest loginRequest);
 
     @POST("auth/join") // 회원가입
-    Call<RegisterResponse> Register(@Body RegisterRequest registerRequest);
+    Call<Void> Register(@Body RegisterRequest registerRequest);
 
     @POST("auth/sec-login") // 2차 로그인
     Call<SecPasswordResponse> SecLogin(@Body int sec_password);
