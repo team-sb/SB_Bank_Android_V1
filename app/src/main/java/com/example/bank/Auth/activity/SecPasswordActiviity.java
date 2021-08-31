@@ -3,6 +3,7 @@ package com.example.bank.Auth.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -22,6 +23,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SecPasswordActiviity extends AppCompatActivity {
+
+    private static final String TAG = "SecPasswordActiviity";
 
     public static String secPassword;
 
@@ -44,9 +47,9 @@ public class SecPasswordActiviity extends AppCompatActivity {
 
     ImageButton secPassword_ib_back;
 
-    int clickNum;
-    String secPwArr[] = new String[5];
-    public static int secPw;
+    int clickNum = 0;
+    String secPwArr[] = new String[20];
+    public static String secPw;
     public static boolean secSuccess;
 
     @Override
@@ -165,6 +168,7 @@ public class SecPasswordActiviity extends AppCompatActivity {
         if(!(Objects.equals(clickSu, "no"))) {
             secPwArr[clickNum] = clickSu;
         }
+
         if(clickNum == 0) {
             ig_d1.setImageResource(R.drawable.emptymoney);
             ig_d2.setImageResource(R.drawable.emptymoney);
@@ -195,10 +199,9 @@ public class SecPasswordActiviity extends AppCompatActivity {
             ig_d3.setImageResource(R.drawable.dot);
             ig_d4.setImageResource(R.drawable.dot);
 
-            String secPwString = secPwArr[1] + secPwArr[2] + secPwArr[3] + secPwArr[4];
+            secPw = secPwArr[1] + secPwArr[2] + secPwArr[3] + secPwArr[4];
 
-            secPw = Integer.parseInt(secPwString);
-
+            Log.d(TAG, "clickButton: " + secPw);
             certified();
         }
     }
@@ -206,7 +209,9 @@ public class SecPasswordActiviity extends AppCompatActivity {
     private void certified() {
         ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
-        Call<SecPasswordResponse> call = serverAPI.SecLogin(secPw);
+        String bearerUserToken = "Bearer " + UserData.user_token;
+        Call<SecPasswordResponse> call = serverAPI.SecLogin(bearerUserToken, secPw);
+        Log.d(TAG, "certified: " + secPw);
 
         call.enqueue(new Callback<SecPasswordResponse>() {
             @Override
@@ -216,16 +221,30 @@ public class SecPasswordActiviity extends AppCompatActivity {
                     UserData.sec_token = response.body().getSecToken();
                     UserData.temp_token = UserData.sec_token;
                     secSuccess = true;
-                    Toast.makeText(SecPasswordActiviity.this, "2차 로그인 성공", Toast.LENGTH_SHORT).show();
                     finish();
                 } else if (result == 401) {
                     Toast.makeText(SecPasswordActiviity.this, "2차 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+
+                    // 초기화
+                    clearInput();
+                } else {
+                    Toast.makeText(SecPasswordActiviity.this, "예기치 못한 오류가 발생했습니다.\n고객센터에 문의해주세요.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<SecPasswordResponse> call, Throwable t) {
+                Toast.makeText(SecPasswordActiviity.this, "예기치 못한 오류가 발생했습니다.\n고객센터에 문의해주세요.", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void clearInput() {
+        clickNum = 0;
+
+        ig_d1.setImageResource(R.drawable.emptymoney);
+        ig_d2.setImageResource(R.drawable.emptymoney);
+        ig_d3.setImageResource(R.drawable.emptymoney);
+        ig_d4.setImageResource(R.drawable.emptymoney);
     }
 }

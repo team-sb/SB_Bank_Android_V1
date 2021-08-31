@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,11 +32,14 @@ import com.example.bank.UserData;
 import com.example.bank.Account.activity.WithdrawActivity;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     TextView tv_price;
     TextView tv_makeAccount;
@@ -49,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
     Button tempw;
 
     DrawerLayout drawerLayout;
+
+    String tempActivityName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton("Create", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(MainActivity.this, CreateAccountActivity.class));
+                        makeAccount();
                     }
                 });
 
@@ -162,18 +169,34 @@ public class MainActivity extends AppCompatActivity {
         tv_name = (TextView) findViewById(R.id.tv_name);
     }
 
+    private void makeAccount() {
+        tempActivityName = "CreateAccountActivity";
+
+        startActivity(new Intent(MainActivity.this, SecPasswordActiviity.class));
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
+        if(CreateAccountActivity.accountExist) {
+            Toast.makeText(MainActivity.this, "계좌가 이미 존재합니다.", Toast.LENGTH_SHORT).show();
 
-        getBalance();
+            return;
+        }
+
+        if(Objects.equals(tempActivityName, "CreateAccountActivity")) {
+            startActivity(new Intent(MainActivity.this, CreateAccountActivity.class));
+        }
+        getBalance(); // 기본 정보 세팅
+
+
     }
 
     private void getBalance() {
 
         ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
-        retrofit2.Call<UserBalanceResponse> call = serverAPI.balanceMain(UserData.temp_token);
+        Call<UserBalanceResponse> call = serverAPI.balanceMain(UserData.user_token);
 
         call.enqueue(new Callback<UserBalanceResponse>() {
             @Override
@@ -182,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
                     tv_price.setText(response.body().getBalance());
                     tv_name.setText(response.body().getName());
                 }
+                Log.d(TAG, "onResponse: ");
             }
 
             @Override
