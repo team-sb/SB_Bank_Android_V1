@@ -96,13 +96,10 @@ public class RegisterActivity extends AppCompatActivity {
         retrofitClient = RetrofitClient.getInstance();
         serverAPI = RetrofitClient.getRetrofitInterface();
 
-        serverAPI.Register(requestRegister).enqueue(new Callback<RegisterResponse>() {
+        serverAPI.Register(requestRegister).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-
-                if (response.isSuccessful() && response.body() != null) {
-
-                    RegisterResponse result = response.body();
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
 
                     if (response.code() == 201) {
                         Toast.makeText(RegisterActivity.this, name + "님 가입을 환영합니다.\n로그인 후 서비스를 이용해주세요!", Toast.LENGTH_SHORT).show();
@@ -113,14 +110,14 @@ public class RegisterActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(RegisterActivity.this, "예기치 못한 오류가 발생했습니다.\n고객센터에 문의해주세요.", Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }
 
             @Override
-            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(RegisterActivity.this, "예기치 못한 오류가 발생했습니다.\n고객센터에 문의해주세요.", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }
