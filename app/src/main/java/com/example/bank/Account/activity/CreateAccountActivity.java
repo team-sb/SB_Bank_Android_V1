@@ -2,7 +2,9 @@ package com.example.bank.Account.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 import com.example.bank.Account.data.AccountResponse;
 import com.example.bank.ApiProvider;
 import com.example.bank.Auth.activity.SecPasswordActiviity;
+import com.example.bank.Main.activity.MainActivity;
 import com.example.bank.R;
 import com.example.bank.ServerAPI;
 import com.example.bank.UserData;
@@ -26,7 +29,6 @@ public class CreateAccountActivity extends AppCompatActivity {
     TextView tv_check;
     TextView tv_newAccount;
 
-    public static Boolean accountExist = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,33 +57,34 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private void createAccount() {
 
-        ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
-
-        String bearerUserToken = "Bearer " + UserData.temp_token;
-
-        Call<AccountResponse> call = serverAPI.createAccount(bearerUserToken);
-
-        call.enqueue(new Callback<AccountResponse>() {
-            @Override
-            public void onResponse(Call<AccountResponse> call, Response<AccountResponse> response) {
-                int result = response.code();
-
-                if(result == 201) { // 성공
-                    Toast.makeText(CreateAccountActivity.this, "계좌 생성이 완료되었습니다!", Toast.LENGTH_SHORT).show();
-                    UserData.temp_token = UserData.user_token;
-                    tv_newAccount.setText(response.body().getAccount());
-
-                    accountExist = true;
-                } else { // 2차 인증
-                    Toast.makeText(CreateAccountActivity.this, "ERROR : 페이지를 새로고침 해주세요", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<AccountResponse> call, Throwable t) {
-
-            }
-        });
+//        ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
+//
+//        String bearerUserToken = "Bearer " + UserData.temp_token;
+//
+//        Call<AccountResponse> call = serverAPI.createAccount(bearerUserToken);
+//
+//        call.enqueue(new Callback<AccountResponse>() {
+//            @Override
+//            public void onResponse(Call<AccountResponse> call, Response<AccountResponse> response) {
+//                int result = response.code();
+//
+//                if(result == 201) { // 성공
+//                    Toast.makeText(CreateAccountActivity.this, "계좌 생성이 완료되었습니다!", Toast.LENGTH_SHORT).show();
+//                    UserData.temp_token = UserData.user_token;
+//                    tv_newAccount.setText(response.body().getAccount());
+//
+//                    accountExist = true;
+//
+//                } else { // 2차 인증
+//                    Toast.makeText(CreateAccountActivity.this, "ERROR : 페이지를 새로고침 해주세요", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<AccountResponse> call, Throwable t) {
+//
+//            }
+//        });
 
     }
 
@@ -89,6 +92,6 @@ public class CreateAccountActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        createAccount();
+        tv_newAccount.setText(MainActivity.accountNum);
     }
 }
