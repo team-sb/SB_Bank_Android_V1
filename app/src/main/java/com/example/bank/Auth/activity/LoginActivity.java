@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -25,6 +26,8 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
+
+    private static final String TAG = "LoginActivity";
 
     private TextView tv_signUpButton;
     private ImageButton ib_next;
@@ -100,22 +103,26 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (response.isSuccessful() && response.body() != null) {
 
-                    LoginResponse result = response.body();
+                    int resultCode = response.code();
 
-                    if(response.code() == 200) {
+                    if(resultCode == 200) {
                         Toast.makeText(LoginActivity.this, username + "님 환영합니다.", Toast.LENGTH_SHORT).show();
-                        UserData.user_token = response.body().getToken();
-
+                        UserData.user_token = response.body().getAccessToken();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    } else if(resultCode == 401) {
+                        Toast.makeText(LoginActivity.this, "로그인에 실패하였습니다.\n비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+                    } else if(resultCode == 404) {
+                        Toast.makeText(LoginActivity.this, "로그인에 실패하였습니다.\n아이디가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "예기치 못한 오류가 발생하였습니다.\n잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
                     }
-                    if(response.code() == 401) {
-                        Toast.makeText(LoginActivity.this, "로그인에 실패하였습니다.\n(아이디 또는 비밀번호를 다시 확인해주세요)", Toast.LENGTH_SHORT).show();
-                    }
+
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "예기치 못한 오류가 발생하였습니다.\n잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
             }
         });
 
