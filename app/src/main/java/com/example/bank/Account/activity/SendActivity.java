@@ -80,14 +80,14 @@ public class SendActivity extends AppCompatActivity {
 
             String bearerUserToken = "Bearer " + UserData.temp_token;
 
-            SendRequest sendRequest = new SendRequest(SendDataActivity.accountNum, money);
+            SendRequest sendRequest = new SendRequest(Integer.parseInt(SendDataActivity.accountNum), money * -1);
 
             serverAPI.transferAccount(bearerUserToken, sendRequest).enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     int result = response.code();
 
-                    if(result == 201) { // 성공
+                    if(result == 200) { // 성공
                         UserData.temp_token = UserData.user_token;
                         SecPasswordActiviity.secSuccess = false;
 

@@ -1,20 +1,22 @@
 package com.example.bank.Account.data;
 
+import com.google.gson.annotations.SerializedName;
+
 public class SendRequest {
-    String target;
+    int target_account;
     int money;
 
-    public SendRequest(String target, int money) {
-        this.target = target;
+    public SendRequest(int target_account, int money) {
+        this.target_account = target_account;
         this.money = money;
     }
 
-    public String getTarget() {
-        return target;
+    public int getTarget_account() {
+        return target_account;
     }
 
-    public void setTarget(String target) {
-        this.target = target;
+    public void setTarget_account(int target_account) {
+        this.target_account = target_account;
     }
 
     public int getMoney() {

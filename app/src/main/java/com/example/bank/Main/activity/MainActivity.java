@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
     String tempActivityName;
+    public static String myAccount;
 
     public static String accountNum;
 
@@ -237,6 +238,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.code() == 200) {
                     tv_price.setText(response.body().getBalance());
                     tv_name.setText(response.body().getName());
+                    myAccount = response.body().getAccountNumber();
                 }
                 if (response.code() == 404) {
                     Toast.makeText(MainActivity.this, "계좌가 존재하지 않습니다.\n우측 상단 \"계좌 생성\" 버튼을 클릭하여 계좌를 생성해주세요.", Toast.LENGTH_SHORT).show();

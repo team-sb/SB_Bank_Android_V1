@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.bank.Account.activity.DepositActivity;
 import com.example.bank.Account.activity.SendDataActivity;
@@ -27,12 +28,17 @@ public class MyPageActivity extends AppCompatActivity {
     ImageButton myPage_ib_back;
     ImageButton ib_settings;
 
+    TextView mypage_tv_accountNum;
+
     DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
+
+        mypage_tv_accountNum = (TextView) findViewById(R.id.mypage_tv_accountNum);
+        mypage_tv_accountNum.setText(MainActivity.myAccount);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_settings);
 
@@ -41,7 +47,7 @@ public class MyPageActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.setChecked(true);
-                drawerLayout.closeDrawer(GravityCompat.START);
+                drawerLayout.closeDrawer(Gravity.RIGHT);
 
                 int menuId = item.getItemId();
 
