@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.bank.Account.activity.CreateAccountActivity;
 import com.example.bank.Account.activity.DepositActivity;
+import com.example.bank.Account.activity.LoanActivity;
 import com.example.bank.Account.data.AccountResponse;
 import com.example.bank.ApiProvider;
 import com.example.bank.Auth.activity.SecPasswordActiviity;
@@ -110,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, SendDataActivity.class));
                 } else if(menuId == R.id.menu_withDraw) {
                     startActivity(new Intent(MainActivity.this, WithdrawActivity.class));
+                } else if(menuId == R.id.menu_loan) {
+                    startActivity(new Intent(MainActivity.this, LoanActivity.class));
                 }
 
                 return true;
