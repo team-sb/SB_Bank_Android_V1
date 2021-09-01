@@ -99,14 +99,11 @@ public class SendActivity extends AppCompatActivity {
                         Toast.makeText(SendActivity.this, "2차 비밀번호가 일치하지 않습니다..", Toast.LENGTH_SHORT).show();
                     } else if (result == 404) {
                         Toast.makeText(SendActivity.this, "계좌 번호가 존재하지 않거나 잔액이 부족합니다.", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Log.d(TAG, "onResponse: " + result);
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Void> call, Throwable t) {
-                    Log.d(TAG, "onFailure: ");
                 }
             });
         }
