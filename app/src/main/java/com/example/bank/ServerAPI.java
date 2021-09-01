@@ -43,8 +43,8 @@ public interface ServerAPI {
     @POST("account/transfer") // 계좌이체
     Call<Void> transferAccount(@Header("Authorization") String token, @Body SendRequest sendRequests);
 
-    @POST("account/borrow") // 대출
-    Call<AccountLoanResponse> loanAccount(@Header("Authorization") String token, @Body String money);
+    @POST("account/loan") // 대출
+    Call<AccountLoanResponse> accountLoan(@Header("Authorization") String token, @Body String money);
 
     // MainPage
 

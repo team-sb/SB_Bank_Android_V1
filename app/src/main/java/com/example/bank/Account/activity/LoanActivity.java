@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.bank.Account.data.AccountLoanResponse;
 import com.example.bank.ApiProvider;
 import com.example.bank.Auth.activity.SecPasswordActiviity;
+import com.example.bank.LoanCheckActivity;
 import com.example.bank.R;
 import com.example.bank.ServerAPI;
 import com.example.bank.UserData;
@@ -35,10 +36,10 @@ public class LoanActivity extends AppCompatActivity {
 
     String stLoanPrice;
 
-    String loanMoney;
-    String loanInterest;
-    String loanBorrowedDate;
-    String loanLoanExpirationDate;
+    public static String loanMoney;
+    public static String loanInterest;
+    public static String loanBorrowedDate;
+    public static String loanLoanExpirationDate;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,26 +78,39 @@ public class LoanActivity extends AppCompatActivity {
         if (SecPasswordActiviity.secSuccess) {
             ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
-            Log.d(TAG, "user token" + UserData.user_token + "sec token" + UserData.sec_token + "temp token" + UserData.temp_token);
+            Log.d(TAG, "user token\n" + UserData.user_token + "sec token\n" + UserData.sec_token + "temp token\n" + UserData.temp_token);
 
             String bearerUserToken = "Bearer " + UserData.temp_token;
 
-            serverAPI.loanAccount()
-//            Call<AccountLoanResponse> call = serverAPI.loanAccount(bearerUserToken, "100000");
-//
-//            call.enqueue(new Callback<AccountLoanResponse>() {
-//                @Override
-//                public void onResponse(Call<AccountLoanResponse> call, Response<AccountLoanResponse> response) {
-//                    Log.d(TAG, "user token" + UserData.user_token + "sec token" + UserData.sec_token + "temp token" + UserData.temp_token);
-//                    Log.d(TAG, "111onResponse: " + response.code());
-//                }
-//
-//                @Override
-//                public void onFailure(Call<AccountLoanResponse> call, Throwable t) {
-//                    Log.d(TAG, "111onFailure: ");
-//                }
-//            });
-            
+            serverAPI.accountLoan(bearerUserToken, stLoanPrice).enqueue(new Callback<AccountLoanResponse>() {
+                @Override
+                public void onResponse(Call<AccountLoanResponse> call, Response<AccountLoanResponse> response) {
+                    int result = response.code();
+
+                    if(result == 200) {
+                        UserData.temp_token = UserData.user_token;
+                        SecPasswordActiviity.secSuccess = false;
+
+                        loanMoney = response.body().getMoney().toString();
+                        loanInterest = Double.toString(response.body().getInterest());
+                        loanBorrowedDate = response.body().getBorrowedDate();
+                        loanLoanExpirationDate = response.body().getLoanExpirationDate();
+
+                        startActivity(new Intent(LoanActivity.this, LoanCheckActivity.class));
+                    } else if (result == 403) { // 2차 인증
+                        Toast.makeText(LoanActivity.this, "2차 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+                    } else if (result == 401) {
+                        Toast.makeText(LoanActivity.this, "2차 비밀번호가 일치하지 않습니다..", Toast.LENGTH_SHORT).show();
+                    } else if (result == 404) {
+                        Toast.makeText(LoanActivity.this, "계좌가 존재하지 않습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<AccountLoanResponse> call, Throwable t) {
+                }
+            });
+
         }
     }
 }
