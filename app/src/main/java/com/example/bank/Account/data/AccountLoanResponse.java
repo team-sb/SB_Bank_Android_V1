@@ -1,31 +1,42 @@
 package com.example.bank.Account.data;
 
-public class AccountLoanResponse {
-    String money;
-    String interest;
-    String borrowExpirationDate;
+import com.google.gson.annotations.SerializedName;
 
-    public String getMoney() {
+public class AccountLoanResponse {
+    int money;
+    float interest;
+    String borrowedDate;
+    String loanExpirationDate;
+
+    public int getMoney() {
         return money;
     }
 
-    public void setMoney(String money) {
+    public void setMoney(int money) {
         this.money = money;
     }
 
-    public String getInterest() {
+    public float getInterest() {
         return interest;
     }
 
-    public void setInterest(String interest) {
+    public void setInterest(float interest) {
         this.interest = interest;
     }
 
-    public String getBorrowExpirationDate() {
-        return borrowExpirationDate;
+    public String getBorrowedDate() {
+        return borrowedDate;
     }
 
-    public void setBorrowExpirationDate(String borrowExpirationDate) {
-        this.borrowExpirationDate = borrowExpirationDate;
+    public void setBorrowedDate(String borrowedDate) {
+        this.borrowedDate = borrowedDate;
+    }
+
+    public String getLoanExpirationDate() {
+        return loanExpirationDate;
+    }
+
+    public void setLoanExpirationDate(String loanExpirationDate) {
+        this.loanExpirationDate = loanExpirationDate;
     }
 }

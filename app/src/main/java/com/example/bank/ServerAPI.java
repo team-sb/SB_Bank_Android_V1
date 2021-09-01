@@ -44,7 +44,7 @@ public interface ServerAPI {
     Call<Void> transferAccount(@Header("Authorization") String token, @Body SendRequest sendRequests);
 
     @POST("account/borrow") // 대출
-    Call<AccountLoanResponse> borrowAccount(@Header("Authorization") String token, @Body String money);
+    Call<AccountLoanResponse> loanAccount(@Header("Authorization") String token, @Body String money);
 
     // MainPage
 
