@@ -1,12 +1,11 @@
 package com.example.bank;
 
-import com.example.bank.Account.activity.AccountBorrowResponse;
+import com.example.bank.Account.data.AccountLoanResponse;
 import com.example.bank.Account.data.AccountResponse;
 import com.example.bank.Account.data.SendRequest;
 import com.example.bank.Auth.data.LoginRequest;
 import com.example.bank.Auth.data.LoginResponse;
 import com.example.bank.Auth.data.RegisterRequest;
-import com.example.bank.Auth.data.RegisterResponse;
 import com.example.bank.Auth.data.SecPasswordResponse;
 import com.example.bank.Main.data.MainPageRequest;
 import com.example.bank.User.data.UserBalanceResponse;
@@ -45,7 +44,7 @@ public interface ServerAPI {
     Call<Void> transferAccount(@Header("Authorization") String token, @Body SendRequest sendRequests);
 
     @POST("account/borrow") // 대출
-    Call<AccountBorrowResponse> borrowAccount(@Header("Authorization") String token, @Body String money);
+    Call<AccountLoanResponse> borrowAccount(@Header("Authorization") String token, @Body String money);
 
     // MainPage
 

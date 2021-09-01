@@ -1,6 +1,6 @@
-package com.example.bank.Account.activity;
+package com.example.bank.Account.data;
 
-public class AccountBorrowResponse {
+public class AccountLoanResponse {
     String money;
     String interest;
     String borrowExpirationDate;
