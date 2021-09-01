@@ -64,14 +64,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btn_balance = (Button) findViewById(R.id.btn_balance);
-        btn_balance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getBalance();
-            }
-        });
-
         ib_sendMoney = (ImageButton) findViewById(R.id.ib_sendMoney);
         ib_sendMoney.setOnClickListener(new View.OnClickListener() {
             @Override
