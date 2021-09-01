@@ -55,42 +55,4 @@ public class SendDataActivity extends AppCompatActivity {
 
     }
 
-/*    private void depositSend() {
-
-        ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
-
-        Call<Void> call = serverAPI.transferAccount(UserData.temp_token, accountNum);
-
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                int result = response.code();
-
-                if(result == 201) { // 성공
-                    UserData.temp_token = UserData.user_token;
-                } else if (result == 403) { // 2차 인증
-                    secCertified();
-                } else if (result == 401) {
-                    Toast.makeText(SendDataActivity.this, "Token이 유효하지 않습니다.", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-
-            }
-        });
-
-    }
-
-    private void secCertified() {
-        startActivity(new Intent(SendDataActivity.this, SecPasswordActiviity.class));
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        depositSend();
-    }*/
 }
