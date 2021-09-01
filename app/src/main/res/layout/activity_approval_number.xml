@@ -26,10 +26,10 @@
         android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.463"
+        app:layout_constraintVertical_bias="0.464"
         app:srcCompat="@drawable/profilec2" />
 
     <TextView
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView27" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/tv_approvalNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="123456"
@@ -69,20 +69,19 @@
         android:textColor="#EEEEEE"
         app:layout_constraintBottom_toBottomOf="@+id/imageView27"
         app:layout_constraintEnd_toEndOf="@+id/imageView27"
-        app:layout_constraintHorizontal_bias="0.407"
+        app:layout_constraintHorizontal_bias="0.439"
         app:layout_constraintStart_toStartOf="@+id/imageView27" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/tv_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="29:58"
+        android:text="60"
         android:textColor="#E91E63"
         app:layout_constraintBottom_toBottomOf="@+id/textView18"
         app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toTopOf="@+id/textView18"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/textView18" />
 
     <ImageButton
         android:adjustViewBounds="true"
