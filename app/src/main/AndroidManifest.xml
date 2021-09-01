@@ -17,6 +17,7 @@
         <activity android:name=".Account.activity.CreateAccountActivity" />
         <activity android:name=".User.activity.MyPageActivity" />
         <activity android:name=".Admin.activity.AdminActivity" />
+        <activity android:name=".Account.activity.SendActivity" />
         <activity android:name=".Account.activity.SendDataActivity" />
         <activity android:name=".Account.activity.WithdrawActivity" />
         <activity android:name=".Auth.activity.RegisterActivity" />
