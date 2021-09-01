@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bank"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Account.activity.LoanActivity"></activity>
+        <activity android:name=".LoanCheckActivity"></activity>
+        <activity android:name=".Account.activity.LoanActivity" />
         <activity android:name=".Account.activity.DepositActivity" />
         <activity android:name=".Main.activity.TransactionDetailsActivity" />
         <activity android:name=".Account.activity.CreateAccountActivity" />
