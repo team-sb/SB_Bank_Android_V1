@@ -24,6 +24,7 @@ import com.example.bank.Account.activity.LoanActivity;
 import com.example.bank.Account.data.AccountResponse;
 import com.example.bank.ApiProvider;
 import com.example.bank.Auth.activity.SecPasswordActiviity;
+import com.example.bank.QRActivity;
 import com.example.bank.User.activity.MyPageActivity;
 import com.example.bank.R;
 import com.example.bank.Account.activity.SendDataActivity;
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     public static String accountNum;
 
     Boolean goTransaction = false;
+
+    Long backKeyPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,8 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if(menuId == R.id.menu_loan) {
                     startActivity(new Intent(MainActivity.this, LoanActivity.class));
                 } else if(menuId == R.id.menu_transaction) {
-                    startActivity(new Intent(MainActivity.this, SecPasswordActiviity.class));
-                    goTransaction = true;
+                    startActivity(new Intent(MainActivity.this, TransactionDetailsActivity.class));
                 }
 
                 return true;
@@ -161,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         tv_qrCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://nid.naver.com/login/qrCheckIn")));
+                startActivity(new Intent(MainActivity.this, QRActivity.class));
             }
         });
 
@@ -181,11 +183,6 @@ public class MainActivity extends AppCompatActivity {
          getBalance();
 
         if(SecPasswordActiviity.secSuccess) { // 계좌 생성
-
-            if(goTransaction) {
-                goTransaction = false;
-                startActivity(new Intent(MainActivity.this, TransactionDetailsActivity.class));
-            }
 
             ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
@@ -252,5 +249,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "예기치 못한 오류가 발생했습니다.\n고객센터에 문의해주세요.", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis();
+            Toast.makeText(this, "한번 더 누르면 앱을 종료합니다.", Toast.LENGTH_SHORT).show();
+        } else {
+            System.exit(0);
+            android.os.Process.killProcess(android.os.Process.myPid());
+        }
     }
 }

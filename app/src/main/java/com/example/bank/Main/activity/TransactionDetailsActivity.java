@@ -148,7 +148,7 @@ public class TransactionDetailsActivity extends AppCompatActivity {
 
         ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
-        String bearerUserToken = "Bearer " + UserData.temp_token;
+        String bearerUserToken = "Bearer " + UserData.user_token;
 
         Call<MainTranscationResponse> call = serverAPI.transactionMain(bearerUserToken);
 
@@ -174,7 +174,7 @@ public class TransactionDetailsActivity extends AppCompatActivity {
 
         ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
-        String bearerUserToken = "Bearer " + UserData.temp_token;
+        String bearerUserToken = "Bearer " + UserData.user_token;
 
         Call<MainTranscationResponse> call = serverAPI.transactionSendMain(bearerUserToken);
 
@@ -200,7 +200,7 @@ public class TransactionDetailsActivity extends AppCompatActivity {
 
         ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
-        String bearerUserToken = "Bearer " + UserData.temp_token;
+        String bearerUserToken = "Bearer " + UserData.user_token;
 
         Call<MainTranscationResponse> call = serverAPI.transactionReceiveMain(bearerUserToken);
 
