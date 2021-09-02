@@ -1,6 +1,7 @@
 package com.example.bank.Main.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,11 @@ import com.example.bank.Main.data.TransactionDetailsData;
 import com.example.bank.R;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TransactionDetailsAdapter extends RecyclerView.Adapter<TransactionDetailsAdapter.CustomViewHolder> {
+
+    private static final String TAG = "TransactionDetailsAdapt";
 
     Context Ctx;
     ArrayList<TransactionDetailsData> transactionList;
@@ -43,13 +47,9 @@ public class TransactionDetailsAdapter extends RecyclerView.Adapter<TransactionD
         holder.tv_transactionMoney.setText(transactionList.get(position).getTv_transactionMoney());
         holder.tv_transactionPrice.setText(transactionList.get(position).getTv_transactionPrice());
 
-        String transactionType = transactionList.get(position).getTv_transactionDate();
-        if (transactionType == "send") {
-            holder.iv_transactionType.setImageResource(R.drawable.sent);
-        } else if (transactionType == "received") {
+        String transactionType = transactionList.get(position).getTv_transactionType();
+        if(Objects.equals(transactionType, "RECEIVE")) {
             holder.iv_transactionType.setImageResource(R.drawable.received);
-        } else if (transactionType == "failed") {
-            holder.iv_transactionType.setImageResource(R.drawable.failed);
         }
     }
 

@@ -24,9 +24,14 @@ import com.example.bank.ServerAPI;
 import com.example.bank.UserData;
 import com.google.gson.JsonObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -119,6 +124,7 @@ public class TransactionDetailsActivity extends AppCompatActivity {
     }
 
     private void detailAll() {
+
         ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
         String bearerUserToken = "Bearer " + UserData.temp_token;
@@ -145,8 +151,54 @@ public class TransactionDetailsActivity extends AppCompatActivity {
     }
     private void detailDeposit() {
 
+        ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
+
+        String bearerUserToken = "Bearer " + UserData.temp_token;
+
+        Call<MainTranscationResponse> call = serverAPI.transactionSendMain(bearerUserToken);
+
+        call.enqueue(new Callback<MainTranscationResponse>() {
+            @Override
+            public void onResponse(Call<MainTranscationResponse> call, Response<MainTranscationResponse> response) {
+                int result = response.code();
+
+                if(result == 200) {
+                    MainTranscationResponse mainTranscationResponse = response.body();
+                    setTransaction(mainTranscationResponse);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MainTranscationResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: ");
+            }
+        });
+
     }
     private void detailWithDraw() {
+
+        ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
+
+        String bearerUserToken = "Bearer " + UserData.temp_token;
+
+        Call<MainTranscationResponse> call = serverAPI.transactionReceiveMain(bearerUserToken);
+
+        call.enqueue(new Callback<MainTranscationResponse>() {
+            @Override
+            public void onResponse(Call<MainTranscationResponse> call, Response<MainTranscationResponse> response) {
+                int result = response.code();
+
+                if(result == 200) {
+                    MainTranscationResponse mainTranscationResponse = response.body();
+                    setTransaction(mainTranscationResponse);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MainTranscationResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: ");
+            }
+        });
 
     }
 
@@ -166,7 +218,10 @@ public class TransactionDetailsActivity extends AppCompatActivity {
 
             String transactionMoney = Integer.toString(Integer.parseInt(setBfBalance) + Integer.parseInt(setAftBalance));
 
-            TransactionDetailsData transactionDetailsData = new TransactionDetailsData(setTransactionDate, setTargetName, setTransactionDate, setTransactionType,  transactionMoney, setMoney);
+            String cutTransactionDate = setTransactionDate.substring(6,11);
+            String cutTransactionTime = setTransactionDate.substring(15, 20);
+
+            TransactionDetailsData transactionDetailsData = new TransactionDetailsData(cutTransactionDate, setTargetName, cutTransactionTime, setTransactionType,  transactionMoney, setMoney);
             transactionList.add(transactionDetailsData);
             transactionDetailsAdapter.notifyDataSetChanged();
         }
