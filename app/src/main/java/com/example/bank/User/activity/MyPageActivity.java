@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.bank.Auth.activity.LoginActivity;
 import com.example.bank.Account.activity.LoanListActivity;
 import com.example.bank.Main.activity.MainActivity;
+import com.example.bank.Main.activity.TransactionDetailsActivity;
 import com.example.bank.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -25,6 +26,8 @@ public class MyPageActivity extends AppCompatActivity {
 
     TextView mypage_tv_accountNum;
     TextView tv_seeLoan;
+    TextView mypage_tv_money;
+    TextView tv_transactions;
 
     DrawerLayout drawerLayout;
 
@@ -32,6 +35,19 @@ public class MyPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
+
+        if(!(MainActivity.myAccount.isEmpty())) {
+            mypage_tv_money = (TextView) findViewById(R.id.mypage_tv_money);
+            mypage_tv_money.setText(MainActivity.myAccount);
+        }
+
+        tv_transactions = (TextView) findViewById(R.id.tv_transactions);
+        tv_transactions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MyPageActivity.this, TransactionDetailsActivity.class));
+            }
+        });
 
         tv_seeLoan = (TextView) findViewById(R.id.tv_seeLoan);
         tv_seeLoan.setOnClickListener(new View.OnClickListener() {
