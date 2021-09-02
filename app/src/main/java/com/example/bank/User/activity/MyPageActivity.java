@@ -18,6 +18,7 @@ import com.example.bank.Account.activity.DepositActivity;
 import com.example.bank.Account.activity.SendDataActivity;
 import com.example.bank.Account.activity.WithdrawActivity;
 import com.example.bank.Auth.activity.LoginActivity;
+import com.example.bank.LoanListActivity;
 import com.example.bank.Main.activity.MainActivity;
 import com.example.bank.R;
 import com.example.bank.UserData;
@@ -29,6 +30,7 @@ public class MyPageActivity extends AppCompatActivity {
     ImageButton ib_settings;
 
     TextView mypage_tv_accountNum;
+    TextView tv_seeLoan;
 
     DrawerLayout drawerLayout;
 
@@ -36,6 +38,14 @@ public class MyPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
+
+        tv_seeLoan = (TextView) findViewById(R.id.tv_seeLoan);
+        tv_seeLoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MyPageActivity.this, LoanListActivity.class));
+            }
+        });
 
         mypage_tv_accountNum = (TextView) findViewById(R.id.mypage_tv_accountNum);
         mypage_tv_accountNum.setText(MainActivity.myAccount);
