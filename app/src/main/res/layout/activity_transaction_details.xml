@@ -56,7 +56,7 @@
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
-        android:id="@+id/textView33"
+        android:id="@+id/transaction_tv_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -68,12 +68,12 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView34"
+        android:id="@+id/transaction_tv_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginBottom="16dp"
-        android:text="200,000 원"
+        android:text="Not Account"
         android:textColor="@color/white"
         android:textSize="32dp"
         android:textStyle="bold"
@@ -92,10 +92,11 @@
         app:srcCompat="@drawable/blackbox" />
 
     <TextView
-        android:id="@+id/textView35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/transaction_tv_send"
+        android:layout_width="81dp"
+        android:layout_height="28dp"
         android:text="송금"
+        android:gravity="center"
         android:textColor="#EEEEEE"
         app:layout_constraintBottom_toBottomOf="@+id/imageView10"
         app:layout_constraintEnd_toEndOf="@+id/imageView10"
@@ -117,13 +118,15 @@
     </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="20dp"
         android:id="@+id/rv_transactionDetails"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_marginBottom="4dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_transactionDetails" />
 
     <ImageButton
         android:id="@+id/transactionDetails_ib_down"
