@@ -57,10 +57,10 @@ public interface ServerAPI {
     Call<MainTranscationResponse> transactionMain(@Header("Authorization") String token);
 
     @GET("user/transaction/send") // 거래 내역(입금)
-    Call<MainPageRequest> transactionSendMain(@Header("Authorization") String token);
+    Call<MainTranscationResponse> transactionSendMain(@Header("Authorization") String token);
 
     @GET("user/transaction/receive") // 거래 내역(출금)
-    Call<MainPageRequest> transactionReceiveMain(@Header("Authorization") String token);
+    Call<MainTranscationResponse> transactionReceiveMain(@Header("Authorization") String token);
 
     // UserPage
 
@@ -74,8 +74,8 @@ public interface ServerAPI {
     Call<MainTranscationResponse> transactionUser(@Header("Authorization") String token);
 
     @GET("user/transaction/send") // 거래 내역(입금)
-    Call<MainPageRequest> transactionSendUser(@Header("Authorization") String token);
+    Call<MainTranscationResponse> transactionSendUser(@Header("Authorization") String token);
 
     @GET("user/transaction/receive") // 거래 내역(출금)
-    Call<MainPageRequest> transactionReceiveUser(@Header("Authorization") String token);
+    Call<MainTranscationResponse> transactionReceiveUser(@Header("Authorization") String token);
 }

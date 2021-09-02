@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.bank.Account.data.LoanListData;
 import com.example.bank.ApiProvider;
 import com.example.bank.Auth.activity.SecPasswordActiviity;
 import com.example.bank.Main.data.MainTranscationResponse;
@@ -21,6 +22,7 @@ import com.example.bank.Main.adapter.TransactionDetailsAdapter;
 import com.example.bank.Main.data.TransactionDetailsData;
 import com.example.bank.ServerAPI;
 import com.example.bank.UserData;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +43,9 @@ public class TransactionDetailsActivity extends AppCompatActivity {
     ImageButton transactionDetails_ib_back;
 
     LinearLayoutManager linearLayoutManager;
+
     ArrayList<TransactionDetailsData> transactionList;
+
     TransactionDetailsAdapter transactionDetailsAdapter;
     RecyclerView recyclerView;
 
@@ -78,11 +82,14 @@ public class TransactionDetailsActivity extends AppCompatActivity {
         });
 
         recyclerView = (RecyclerView) findViewById(R.id.rv_transactionDetails);
+
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
+
         transactionList = new ArrayList<>();
 
         transactionDetailsAdapter = new TransactionDetailsAdapter(transactionList, getApplicationContext());
+
         recyclerView.setAdapter(transactionDetailsAdapter);
     }
 
@@ -100,11 +107,11 @@ public class TransactionDetailsActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 selectedText = items[which].toString();
                 if(Objects.equals(selectedText, "전체")) {
-                    startActivity(new Intent(TransactionDetailsActivity.this, SecPasswordActiviity.class));
+                    detailAll();
                 } else if(Objects.equals(selectedText, "입금")) {
-                    startActivity(new Intent(TransactionDetailsActivity.this, SecPasswordActiviity.class));
+                    detailDeposit();
                 } else if(Objects.equals(selectedText, "출금")) {
-                    startActivity(new Intent(TransactionDetailsActivity.this, SecPasswordActiviity.class));
+                    detailWithDraw();
                 }
             }
         });
@@ -121,7 +128,12 @@ public class TransactionDetailsActivity extends AppCompatActivity {
         call.enqueue(new Callback<MainTranscationResponse>() {
             @Override
             public void onResponse(Call<MainTranscationResponse> call, Response<MainTranscationResponse> response) {
-                Log.d(TAG, "onResponse: 성공");
+                int result = response.code();
+
+                if(result == 200) {
+                    MainTranscationResponse mainTranscationResponse = response.body();
+                    setTransaction(mainTranscationResponse);
+                }
             }
 
             @Override
@@ -130,13 +142,6 @@ public class TransactionDetailsActivity extends AppCompatActivity {
             }
         });
 
-
-
-        transactionList.clear();
-        TransactionDetailsData transactionDetailsData = new TransactionDetailsData("8-25", "임세현", "8:40",
-                "send", "-10", "200,000");
-        transactionList.add(transactionDetailsData);
-        transactionDetailsAdapter.notifyDataSetChanged();
     }
     private void detailDeposit() {
 
@@ -145,18 +150,39 @@ public class TransactionDetailsActivity extends AppCompatActivity {
 
     }
 
+    private void setTransaction(MainTranscationResponse mainTranscationResponse) {
+        int trsactionSize = mainTranscationResponse.getTransactions().size();
+        for(int i = 0; i < trsactionSize; i++) {
+            JsonObject jsonObject = mainTranscationResponse.getTransactions().get(i);
+
+            String setMemberId = jsonObject.get("memberId").toString();
+            String setTargetAccount= jsonObject.get("targetAccount").toString();
+            String setTargetName = jsonObject.get("targetName").toString();
+            String setMoney = jsonObject.get("money").toString();
+            String setTransactionDate = jsonObject.get("transactionDate").toString();
+            String setTransactionType = jsonObject.get("transactionType").toString();
+            String setBfBalance = jsonObject.get("bfBalance").toString();
+            String setAftBalance= jsonObject.get("aftBalance").toString();
+
+            String transactionMoney = Integer.toString(Integer.parseInt(setBfBalance) + Integer.parseInt(setAftBalance));
+
+            TransactionDetailsData transactionDetailsData = new TransactionDetailsData(setTransactionDate, setTargetName, setTransactionDate, setTransactionType,  transactionMoney, setMoney);
+            transactionList.add(transactionDetailsData);
+            transactionDetailsAdapter.notifyDataSetChanged();
+        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
 
-        if(SecPasswordActiviity.secSuccess) {
-            if (Objects.equals(selectedText, "전체")) {
-                detailAll();
-            } else if (Objects.equals(selectedText, "입금")) {
-                detailDeposit();
-            } else if (Objects.equals(selectedText, "출금")) {
-                detailWithDraw();
-            }
+        if (Objects.equals(selectedText, "전체")) {
+            detailAll();
+        } else if (Objects.equals(selectedText, "입금")) {
+            detailDeposit();
+        } else if (Objects.equals(selectedText, "출금")) {
+            detailWithDraw();
         }
+
     }
 }
