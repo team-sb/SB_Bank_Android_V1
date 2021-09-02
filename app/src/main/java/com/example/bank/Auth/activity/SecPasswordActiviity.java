@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,8 @@ public class SecPasswordActiviity extends AppCompatActivity {
     private static final String TAG = "SecPasswordActiviity";
 
     public static String secPassword;
+
+    ProgressBar secPassword_progressBar;
 
     TextView tv_one;
     TextView tv_two;
@@ -56,6 +59,8 @@ public class SecPasswordActiviity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sec_password);
+
+        secPassword_progressBar = (ProgressBar) findViewById(R.id.secPassword_progressBar);
 
         secPassword_ib_back = (ImageButton) findViewById(R.id.secPassword_ib_back);
         secPassword_ib_back.setOnClickListener(new View.OnClickListener() {
@@ -211,11 +216,14 @@ public class SecPasswordActiviity extends AppCompatActivity {
 
         String bearerUserToken = "Bearer " + UserData.user_token;
         Call<SecPasswordResponse> call = serverAPI.SecLogin(bearerUserToken, secPw);
-        Log.d(TAG, "certified: " + secPw);
+
+        secPassword_progressBar.setVisibility(View.VISIBLE);
 
         call.enqueue(new Callback<SecPasswordResponse>() {
             @Override
             public void onResponse(Call<SecPasswordResponse> call, Response<SecPasswordResponse> response) {
+                secPassword_progressBar.setVisibility(View.GONE);
+
                 int result = response.code();
                 if(result == 200) {
                     UserData.sec_token = response.body().getSecToken();
@@ -234,6 +242,8 @@ public class SecPasswordActiviity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SecPasswordResponse> call, Throwable t) {
+                secPassword_progressBar.setVisibility(View.GONE);
+
                 Toast.makeText(SecPasswordActiviity.this, "예기치 못한 오류가 발생했습니다.\n고객센터에 문의해주세요.", Toast.LENGTH_SHORT).show();
             }
         });
