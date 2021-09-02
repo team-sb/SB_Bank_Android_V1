@@ -74,24 +74,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // 임시 출금 이동
-        tempw = (Button) findViewById(R.id.tempw);
-        tempw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, WithdrawActivity.class));
-            }
-        });
-
-        // 임시 2차 비밀번호 이동
-        temp2 = (Button) findViewById(R.id.temp2);
-        temp2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SecPasswordActiviity.class));
-            }
-        });
-
         drawerLayout = (DrawerLayout) findViewById(R.id.main_drawerLayout);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
