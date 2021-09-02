@@ -1,4 +1,4 @@
-package com.example.bank;
+package com.example.bank.Account.data;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.bank.Account.activity.LoanActivity;
+import com.example.bank.R;
 
 public class LoanCheckActivity extends AppCompatActivity {
 

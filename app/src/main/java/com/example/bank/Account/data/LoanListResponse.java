@@ -1,4 +1,4 @@
-package com.example.bank;
+package com.example.bank.Account.data;
 
 import com.google.gson.JsonObject;
 

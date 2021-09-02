@@ -1,15 +1,20 @@
-package com.example.bank;
+package com.example.bank.Account.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.JsonReader;
 import android.util.Log;
 import android.widget.LinearLayout;
 
+import com.example.bank.ApiProvider;
+import com.example.bank.Account.adapter.LoanListAdapter;
+import com.example.bank.Account.data.LoanListData;
+import com.example.bank.Account.data.LoanListResponse;
+import com.example.bank.R;
+import com.example.bank.ServerAPI;
+import com.example.bank.UserData;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;

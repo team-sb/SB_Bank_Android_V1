@@ -1,4 +1,4 @@
-package com.example.bank;
+package com.example.bank.Account.data;
 
 public class LoanListData {
     String money;

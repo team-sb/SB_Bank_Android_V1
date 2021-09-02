@@ -6,20 +6,33 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.bank.ApiProvider;
+import com.example.bank.Auth.activity.SecPasswordActiviity;
+import com.example.bank.Main.data.MainTranscationResponse;
 import com.example.bank.R;
 import com.example.bank.Main.adapter.TransactionDetailsAdapter;
 import com.example.bank.Main.data.TransactionDetailsData;
+import com.example.bank.ServerAPI;
+import com.example.bank.UserData;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class TransactionDetailsActivity extends AppCompatActivity {
+
+    private static final String TAG = "TransactionDetailsActiv";
 
     String transactionSelect;
     TextView tv_transactionDetails;
@@ -31,6 +44,8 @@ public class TransactionDetailsActivity extends AppCompatActivity {
     ArrayList<TransactionDetailsData> transactionList;
     TransactionDetailsAdapter transactionDetailsAdapter;
     RecyclerView recyclerView;
+
+    static String selectedText = "전체";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,20 +98,45 @@ public class TransactionDetailsActivity extends AppCompatActivity {
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String selectedText = items[which].toString();
+                selectedText = items[which].toString();
                 if(Objects.equals(selectedText, "전체")) {
-                    detailAll();
+                    startActivity(new Intent(TransactionDetailsActivity.this, SecPasswordActiviity.class));
                 } else if(Objects.equals(selectedText, "입금")) {
-                    detailDeposit();
+                    startActivity(new Intent(TransactionDetailsActivity.this, SecPasswordActiviity.class));
                 } else if(Objects.equals(selectedText, "출금")) {
-                    detailWithDraw();
+                    startActivity(new Intent(TransactionDetailsActivity.this, SecPasswordActiviity.class));
                 }
             }
         });
         builder.show();
     }
-    private void detailAll() {
 
+    private void detailAll() {
+        ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
+
+        String bearerUserToken = "Bearer " + UserData.temp_token;
+
+        Call<MainTranscationResponse> call = serverAPI.transactionMain(bearerUserToken);
+
+        call.enqueue(new Callback<MainTranscationResponse>() {
+            @Override
+            public void onResponse(Call<MainTranscationResponse> call, Response<MainTranscationResponse> response) {
+                Log.d(TAG, "onResponse: 성공");
+            }
+
+            @Override
+            public void onFailure(Call<MainTranscationResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: ");
+            }
+        });
+
+
+
+        transactionList.clear();
+        TransactionDetailsData transactionDetailsData = new TransactionDetailsData("8-25", "임세현", "8:40",
+                "send", "-10", "200,000");
+        transactionList.add(transactionDetailsData);
+        transactionDetailsAdapter.notifyDataSetChanged();
     }
     private void detailDeposit() {
 
@@ -109,10 +149,14 @@ public class TransactionDetailsActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        transactionList.clear();
-        TransactionDetailsData transactionDetailsData = new TransactionDetailsData("8-25", "임세현", "8:40",
-                "send", "-10", "200,000");
-        transactionList.add(transactionDetailsData);
-        transactionDetailsAdapter.notifyDataSetChanged();
+        if(SecPasswordActiviity.secSuccess) {
+            if (Objects.equals(selectedText, "전체")) {
+                detailAll();
+            } else if (Objects.equals(selectedText, "입금")) {
+                detailDeposit();
+            } else if (Objects.equals(selectedText, "출금")) {
+                detailWithDraw();
+            }
+        }
     }
 }

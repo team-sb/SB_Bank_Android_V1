@@ -2,10 +2,8 @@ package com.example.bank.User.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -14,14 +12,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.bank.Account.activity.DepositActivity;
-import com.example.bank.Account.activity.SendDataActivity;
-import com.example.bank.Account.activity.WithdrawActivity;
 import com.example.bank.Auth.activity.LoginActivity;
-import com.example.bank.LoanListActivity;
+import com.example.bank.Account.activity.LoanListActivity;
 import com.example.bank.Main.activity.MainActivity;
 import com.example.bank.R;
-import com.example.bank.UserData;
 import com.google.android.material.navigation.NavigationView;
 
 public class MyPageActivity extends AppCompatActivity {

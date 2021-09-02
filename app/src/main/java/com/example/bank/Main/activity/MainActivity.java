@@ -10,7 +10,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,8 +32,6 @@ import com.example.bank.User.data.UserBalanceResponse;
 import com.example.bank.UserData;
 import com.example.bank.Account.activity.WithdrawActivity;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.style.TtsSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -13,9 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bank.Account.data.AccountLoanResponse;
+import com.example.bank.Account.data.LoanCheckActivity;
 import com.example.bank.ApiProvider;
 import com.example.bank.Auth.activity.SecPasswordActiviity;
-import com.example.bank.LoanCheckActivity;
 import com.example.bank.R;
 import com.example.bank.ServerAPI;
 import com.example.bank.UserData;

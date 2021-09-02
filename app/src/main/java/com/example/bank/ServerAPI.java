@@ -2,12 +2,14 @@ package com.example.bank;
 
 import com.example.bank.Account.data.AccountLoanResponse;
 import com.example.bank.Account.data.AccountResponse;
+import com.example.bank.Account.data.LoanListResponse;
 import com.example.bank.Account.data.SendRequest;
 import com.example.bank.Auth.data.LoginRequest;
 import com.example.bank.Auth.data.LoginResponse;
 import com.example.bank.Auth.data.RegisterRequest;
 import com.example.bank.Auth.data.SecPasswordResponse;
 import com.example.bank.Main.data.MainPageRequest;
+import com.example.bank.Main.data.MainTranscationResponse;
 import com.example.bank.User.data.UserBalanceResponse;
 
 import retrofit2.Call;
@@ -52,7 +54,7 @@ public interface ServerAPI {
     Call<UserBalanceResponse> balanceMain(@Header("Authorization") String token);
 
     @GET("user/transaction") // 거래 내역(전체)
-    Call<MainPageRequest> transactionMain(@Header("Authorization") String token);
+    Call<MainTranscationResponse> transactionMain(@Header("Authorization") String token);
 
     @GET("user/transaction/send") // 거래 내역(입금)
     Call<MainPageRequest> transactionSendMain(@Header("Authorization") String token);
@@ -68,11 +70,8 @@ public interface ServerAPI {
     @GET("user/loan") // 대출 현황
     Call<LoanListResponse> loanUser(@Header("Authorization") String token);
 
-    @GET("user/credit") // 신용 등급
-    Call<MainPageRequest> creditUser(@Header("Authorization") String token);
-
     @GET("user/transaction") // 거래 내역(전체)
-    Call<MainPageRequest> transactionUser(@Header("Authorization") String token);
+    Call<MainTranscationResponse> transactionUser(@Header("Authorization") String token);
 
     @GET("user/transaction/send") // 거래 내역(입금)
     Call<MainPageRequest> transactionSendUser(@Header("Authorization") String token);
