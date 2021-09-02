@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static String accountNum;
 
+    Boolean goTransaction = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, WithdrawActivity.class));
                 } else if(menuId == R.id.menu_loan) {
                     startActivity(new Intent(MainActivity.this, LoanActivity.class));
+                } else if(menuId == R.id.menu_transaction) {
+                    startActivity(new Intent(MainActivity.this, SecPasswordActiviity.class));
+                    goTransaction = true;
                 }
 
                 return true;
@@ -168,6 +173,11 @@ public class MainActivity extends AppCompatActivity {
          getBalance();
 
         if(SecPasswordActiviity.secSuccess) { // 계좌 생성
+
+            if(goTransaction) {
+                goTransaction = false;
+                startActivity(new Intent(MainActivity.this, TransactionDetailsActivity.class));
+            }
 
             ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
