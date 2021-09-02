@@ -96,10 +96,8 @@ public class LoanActivity extends AppCompatActivity {
                         loanLoanExpirationDate = response.body().getLoanExpirationDate();
 
                         startActivity(new Intent(LoanActivity.this, LoanCheckActivity.class));
-                    } else if (result == 403) { // 2차 인증
+                    } else if (result == 403 || result == 401) { // 2차 인증
                         Toast.makeText(LoanActivity.this, "2차 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
-                    } else if (result == 401) {
-                        Toast.makeText(LoanActivity.this, "2차 비밀번호가 일치하지 않습니다..", Toast.LENGTH_SHORT).show();
                     } else if (result == 404) {
                         Toast.makeText(LoanActivity.this, "계좌가 존재하지 않습니다.", Toast.LENGTH_SHORT).show();
                     }
