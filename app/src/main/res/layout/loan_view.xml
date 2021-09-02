@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#192259">
+
+        <TextView
+            android:id="@+id/view_tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="1000,000"
+            android:textColor="#EEEEEE"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/view_tv_borrowedDate"
+            app:layout_constraintTop_toBottomOf="@+id/view_tv_borrowedDate" />
+
+        <TextView
+            android:id="@+id/view_tv_interest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="156dp"
+            android:text="월 이자 : "
+            android:textColor="#EEEEEE"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.358" />
+
+        <TextView
+            android:id="@+id/view_tv_borrowedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="01-09"
+            android:textColor="#97EEEEEE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/view_tv_loanExpirationDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="대출 만료일 :"
+            android:textColor="#EEEEEE"
+            app:layout_constraintStart_toStartOf="@+id/view_tv_interest"
+            app:layout_constraintTop_toBottomOf="@+id/view_tv_interest" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
