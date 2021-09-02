@@ -66,7 +66,7 @@ public interface ServerAPI {
     Call<MainPageRequest> balanceUser(@Header("Authorization") String token);
 
     @GET("user/loan") // 대출 현황
-    Call<MainPageRequest> loanUser(@Header("Authorization") String token);
+    Call<LoanListResponse> loanUser(@Header("Authorization") String token);
 
     @GET("user/credit") // 신용 등급
     Call<MainPageRequest> creditUser(@Header("Authorization") String token);
