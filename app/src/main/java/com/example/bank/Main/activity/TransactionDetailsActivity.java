@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.bank.Account.activity.SendDataActivity;
 import com.example.bank.Account.data.LoanListData;
 import com.example.bank.ApiProvider;
 import com.example.bank.Auth.activity.SecPasswordActiviity;
@@ -56,10 +57,30 @@ public class TransactionDetailsActivity extends AppCompatActivity {
 
     static String selectedText = "전체";
 
+    TextView transaction_tv_price;
+    TextView transaction_tv_account;
+    TextView transaction_tv_send;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_details);
+
+        transaction_tv_send = (TextView) findViewById(R.id.transaction_tv_send);
+        transaction_tv_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TransactionDetailsActivity.this, SendDataActivity.class));
+            }
+        });
+
+        transaction_tv_account = (TextView) findViewById(R.id.transaction_tv_account);
+        transaction_tv_price = (TextView) findViewById(R.id.transaction_tv_price);
+
+        if(!(MainActivity.myAccount.isEmpty())) {
+            transaction_tv_account.setText(MainActivity.myAccount);
+            transaction_tv_price.setText(MainActivity.price);
+        }
 
         transactionDetails_ib_back = (ImageButton) findViewById(R.id.transactionDetails_ib_back);
         transactionDetails_ib_back.setOnClickListener(new View.OnClickListener() {
