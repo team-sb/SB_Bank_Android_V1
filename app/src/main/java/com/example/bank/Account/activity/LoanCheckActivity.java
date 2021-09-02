@@ -1,12 +1,14 @@
-package com.example.bank.Account.data;
+package com.example.bank.Account.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.bank.Account.activity.LoanActivity;
+import com.example.bank.Main.activity.MainActivity;
 import com.example.bank.R;
 
 public class LoanCheckActivity extends AppCompatActivity {
@@ -29,14 +31,20 @@ public class LoanCheckActivity extends AppCompatActivity {
 
         tv_loanMoney.setText(LoanActivity.loanMoney);
         tv_interest.setText(LoanActivity.loanInterest);
-        tv_borrowedDate.setText(LoanActivity.loanBorrowedDate);
-        tv_loanExpirationDate.setText(LoanActivity.loanLoanExpirationDate);
+
+        String borrowedDate = LoanActivity.loanBorrowedDate.substring(0, 10);
+        String loanExpirationDate = LoanActivity.loanLoanExpirationDate.substring(0, 10);
+
+        tv_borrowedDate.setText(borrowedDate);
+        tv_loanExpirationDate.setText(loanExpirationDate);
 
         loan_tv_finish = (TextView) findViewById(R.id.loan_tv_finish);
         loan_tv_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(LoanCheckActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
             }
         });
     }
