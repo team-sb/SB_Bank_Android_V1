@@ -1,6 +1,7 @@
 package com.example.bank.Main.adapter;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,15 +43,19 @@ public class TransactionDetailsAdapter extends RecyclerView.Adapter<TransactionD
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         holder.tv_transactionDate.setText(transactionList.get(position).getTv_transactionDate());
-        holder.tv_transactionName.setText(transactionList.get(position).getTv_transactionName());
+        holder.tv_transactionName.setText(transactionList.get(position).getTv_transactionName().replace("\"", ""));
         holder.tv_transactionTime.setText(transactionList.get(position).getTv_transactionTime());
         holder.tv_transactionMoney.setText(transactionList.get(position).getTv_transactionMoney());
         holder.tv_transactionPrice.setText(transactionList.get(position).getTv_transactionPrice());
 
-        String transactionType = transactionList.get(position).getTv_transactionType();
-        if(Objects.equals(transactionType, "RECEIVE")) {
+        if(Objects.equals(transactionList.get(position).getTv_transactionType(), "\"RECEIVE\"")) {
             holder.iv_transactionType.setImageResource(R.drawable.received);
+        } else if(Objects.equals(transactionList.get(position).getTv_transactionType(), "\"SEND\"")) {
+            holder.iv_transactionType.setImageResource(R.drawable.sent);
+        } else if(Objects.equals(transactionList.get(position).getTv_transactionType(), "\"FAILED\"")) {
+            holder.iv_transactionType.setImageResource(R.drawable.failed);
         }
+        
     }
 
     @Override
