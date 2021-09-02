@@ -44,17 +44,17 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_makeAccount;
     TextView tv_qrCheck;
     TextView tv_name;
+    TextView tv_seeInfo;
 
     ImageButton ib_sendMoney;
     ImageButton ib_menu;
 
-    Button temp2;
-    Button tempw;
-
     DrawerLayout drawerLayout;
 
     String tempActivityName;
+
     public static String myAccount;
+    public static String price;
 
     public static String accountNum;
 
@@ -64,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tv_seeInfo = (TextView)  findViewById(R.id.tv_seeInfo);
+        tv_seeInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MyPageActivity.class));
+            }
+        });
 
         ib_sendMoney = (ImageButton) findViewById(R.id.ib_sendMoney);
         ib_sendMoney.setOnClickListener(new View.OnClickListener() {
@@ -228,9 +236,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserBalanceResponse> call, Response<UserBalanceResponse> response) {
                 if (response.code() == 200) {
+                    price = response.body().getBalance();
+                    myAccount = response.body().getAccountNumber();
+
                     tv_price.setText(response.body().getBalance());
                     tv_name.setText(response.body().getName());
-                    myAccount = response.body().getAccountNumber();
                 }
                 if (response.code() == 404) {
                     Toast.makeText(MainActivity.this, "계좌가 존재하지 않습니다.\n우측 상단 \"계좌 생성\" 버튼을 클릭하여 계좌를 생성해주세요.", Toast.LENGTH_SHORT).show();
