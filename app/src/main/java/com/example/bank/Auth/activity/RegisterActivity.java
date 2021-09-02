@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,8 @@ public class RegisterActivity extends AppCompatActivity {
     RetrofitClient retrofitClient;
     ServerAPI serverAPI;
 
+    ProgressBar register_progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
                 Register();
             }
         });
+
+        register_progressBar = (ProgressBar) findViewById(R.id.register_progressBar);
     }
 
     private void Register() {
@@ -85,6 +90,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void RegisterResponse() {
+        register_progressBar.setVisibility(View.VISIBLE);
+
         String name = et_RegisterName.getText().toString().trim();
         String username = et_RegisterId.getText().toString().trim();
         String password = et_RegisterPw.getText().toString().trim();
@@ -100,6 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
+                    register_progressBar.setVisibility(View.GONE);
 
                     if (response.code() == 201) {
                         Toast.makeText(RegisterActivity.this, name + "님 가입을 환영합니다.\n로그인 후 서비스를 이용해주세요!", Toast.LENGTH_SHORT).show();
@@ -115,6 +123,8 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                register_progressBar.setVisibility(View.GONE);
+
                 Toast.makeText(RegisterActivity.this, "예기치 못한 오류가 발생했습니다.\n고객센터에 문의해주세요.", Toast.LENGTH_SHORT).show();
             }
         });

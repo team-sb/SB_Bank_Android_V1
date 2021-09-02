@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,10 +42,14 @@ public class LoginActivity extends AppCompatActivity {
     public static String username;
     public static String password;
 
+    ProgressBar login_progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        login_progressBar = (ProgressBar) findViewById(R.id.login_progressBar);
 
         et_putID = (EditText) findViewById(R.id.et_putID);
         et_putPW = (EditText) findViewById(R.id.et_putPW);
@@ -88,6 +93,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void LoginResponse() {
+        login_progressBar.setVisibility(View.VISIBLE);
+
         String username = et_putID.getText().toString().trim();
         String password = et_putPW.getText().toString().trim();
 
@@ -102,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 
                 if (response.isSuccessful() && response.body() != null) {
+                    login_progressBar.setVisibility(View.GONE);
 
                     int resultCode = response.code();
 
@@ -122,6 +130,8 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
+                login_progressBar.setVisibility(View.GONE);
+
                 Toast.makeText(LoginActivity.this, "예기치 못한 오류가 발생하였습니다.\n잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
             }
         });

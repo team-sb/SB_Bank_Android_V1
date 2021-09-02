@@ -147,5 +147,14 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="@+id/imageView5" />
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/register_progressBar"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
