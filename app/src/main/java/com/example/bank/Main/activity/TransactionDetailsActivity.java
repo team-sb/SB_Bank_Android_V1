@@ -134,10 +134,13 @@ public class TransactionDetailsActivity extends AppCompatActivity {
                 selectedText = items[which].toString();
                 if(Objects.equals(selectedText, "전체")) {
                     detailAll();
+                    tv_transactionDetails.setText("전체");
                 } else if(Objects.equals(selectedText, "입금")) {
                     detailDeposit();
+                    tv_transactionDetails.setText("입금");
                 } else if(Objects.equals(selectedText, "출금")) {
                     detailWithDraw();
+                    tv_transactionDetails.setText("출금");
                 }
             }
         });
@@ -172,6 +175,7 @@ public class TransactionDetailsActivity extends AppCompatActivity {
     }
     private void detailDeposit() {
 
+
         ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
         String bearerUserToken = "Bearer " + UserData.user_token;
@@ -197,7 +201,6 @@ public class TransactionDetailsActivity extends AppCompatActivity {
 
     }
     private void detailWithDraw() {
-
         ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
 
         String bearerUserToken = "Bearer " + UserData.user_token;
@@ -225,6 +228,9 @@ public class TransactionDetailsActivity extends AppCompatActivity {
 
     private void setTransaction(MainTranscationResponse mainTranscationResponse) {
         int trsactionSize = mainTranscationResponse.getTransactions().size();
+
+        transactionList.clear();
+
         for(int i = 0; i < trsactionSize; i++) {
             JsonObject jsonObject = mainTranscationResponse.getTransactions().get(i);
 
@@ -237,12 +243,11 @@ public class TransactionDetailsActivity extends AppCompatActivity {
             String setBfBalance = jsonObject.get("bfBalance").toString();
             String setAftBalance= jsonObject.get("aftBalance").toString();
 
-            String transactionMoney = Integer.toString(Integer.parseInt(setBfBalance) + Integer.parseInt(setAftBalance));
 
             String cutTransactionDate = setTransactionDate.substring(6,11);
             String cutTransactionTime = setTransactionDate.substring(15, 20);
 
-            TransactionDetailsData transactionDetailsData = new TransactionDetailsData(cutTransactionDate, setTargetName, cutTransactionTime, setTransactionType,  transactionMoney, setMoney);
+            TransactionDetailsData transactionDetailsData = new TransactionDetailsData(cutTransactionDate, setTargetName, cutTransactionTime, setTransactionType, setAftBalance, setMoney);
             transactionList.add(transactionDetailsData);
             transactionDetailsAdapter.notifyDataSetChanged();
         }
