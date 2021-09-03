@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bank.Account.activity.LoanCheckActivity;
+import com.example.bank.Admin.activity.AdminActivity;
 import com.example.bank.Auth.data.LoginRequest;
 import com.example.bank.Auth.data.LoginResponse;
 import com.example.bank.Main.activity.MainActivity;
@@ -21,6 +22,8 @@ import com.example.bank.R;
 import com.example.bank.RetrofitClient;
 import com.example.bank.ServerAPI;
 import com.example.bank.UserData;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -117,6 +120,15 @@ public class LoginActivity extends AppCompatActivity {
                     if(resultCode == 200) {
                         Toast.makeText(LoginActivity.this, username + "님 환영합니다.", Toast.LENGTH_SHORT).show();
                         UserData.user_token = response.body().getAccessToken();
+
+                        if(Objects.equals(username, "admin")) {
+                            Toast.makeText(LoginActivity.this, "관리자 권한으로 접속하셨습니다.", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            startActivity(intent);
+
+                            return;
+                        }
 
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
