@@ -257,13 +257,8 @@ public class TransactionDetailsActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        if (Objects.equals(selectedText, "전체")) {
-            detailAll();
-        } else if (Objects.equals(selectedText, "입금")) {
-            detailDeposit();
-        } else if (Objects.equals(selectedText, "출금")) {
-            detailWithDraw();
-        }
+        detailAll();
+        tv_transactionDetails.setText("전체");
 
     }
 }
