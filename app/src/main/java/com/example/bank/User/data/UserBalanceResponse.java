@@ -4,6 +4,11 @@ public class UserBalanceResponse {
     String balance;
     String name;
     String accountNumber;
+    String id;
+
+    public String getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
