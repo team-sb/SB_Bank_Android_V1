@@ -6,20 +6,32 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.bank.Account.data.LoanListData;
+import com.example.bank.Account.data.LoanListResponse;
+import com.example.bank.ApiProvider;
 import com.example.bank.Auth.activity.LoginActivity;
 import com.example.bank.Account.activity.LoanListActivity;
 import com.example.bank.Main.activity.MainActivity;
 import com.example.bank.Main.activity.TransactionDetailsActivity;
 import com.example.bank.R;
+import com.example.bank.ServerAPI;
+import com.example.bank.UserData;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.JsonObject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MyPageActivity extends AppCompatActivity {
+    private static final String TAG = "MyPageActivity";
 
     ImageButton myPage_ib_back;
     ImageButton ib_settings;
@@ -28,8 +40,11 @@ public class MyPageActivity extends AppCompatActivity {
     TextView tv_seeLoan;
     TextView mypage_tv_money;
     TextView tv_transactions;
+    TextView tv_creditPrice;
 
     DrawerLayout drawerLayout;
+
+    int sumLoanMoney = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +53,7 @@ public class MyPageActivity extends AppCompatActivity {
 
         if(!(MainActivity.myAccount.isEmpty())) {
             mypage_tv_money = (TextView) findViewById(R.id.mypage_tv_money);
-            mypage_tv_money.setText(MainActivity.myAccount);
+            mypage_tv_money.setText(MainActivity.price);
         }
 
         tv_transactions = (TextView) findViewById(R.id.tv_transactions);
@@ -95,12 +110,51 @@ public class MyPageActivity extends AppCompatActivity {
             }
         });
 
-
         myPage_ib_back = (ImageButton) findViewById(R.id.myPage_ib_back);
         myPage_ib_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        tv_creditPrice = (TextView) findViewById(R.id.tv_creditPrice);
+
+        getLoanPrice();
+    }
+
+    private void getLoanPrice() {
+        ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
+
+        String bearUserToken = "Bearer " + UserData.user_token;
+
+        Call<LoanListResponse> call = serverAPI.loanUser(bearUserToken);
+
+        call.enqueue(new Callback<LoanListResponse>() {
+            @Override
+            public void onResponse(Call<LoanListResponse> call, Response<LoanListResponse> response) {
+                Log.d(TAG, "onResponse11: " + response.code());
+                int result = response.code();
+
+                if(result == 200) {
+                    LoanListResponse loanList = response.body();
+
+                    int loanSize = loanList.getLoans().size();
+
+                    for(int i = 0; i < loanSize; i++) {
+                        JsonObject jsonObject = loanList.getLoans().get(i);
+                        String loanMoney = jsonObject.get("money").toString();
+
+                        sumLoanMoney += Integer.parseInt(loanMoney);
+                    }
+
+                    tv_creditPrice.setText("" + sumLoanMoney);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoanListResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: ");
             }
         });
     }
