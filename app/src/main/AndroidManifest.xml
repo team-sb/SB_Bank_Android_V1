@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bank"
         android:usesCleartextTraffic="true">
-        <activity android:name=".QRActivity"></activity>
+        <activity android:name=".AdminUserInfoActivity"></activity>
+        <activity android:name=".QRActivity" />
         <activity android:name=".Account.activity.LoanListActivity" />
         <activity android:name=".Account.activity.LoanCheckActivity" />
         <activity android:name=".Account.activity.LoanActivity" />
