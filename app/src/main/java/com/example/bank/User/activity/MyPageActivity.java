@@ -1,9 +1,11 @@
 package com.example.bank.User.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,9 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bank.Account.data.LoanListData;
 import com.example.bank.Account.data.LoanListResponse;
+import com.example.bank.Admin.data.UserListData;
 import com.example.bank.ApiProvider;
 import com.example.bank.Auth.activity.LoginActivity;
 import com.example.bank.Account.activity.LoanListActivity;
@@ -22,6 +26,7 @@ import com.example.bank.Main.activity.MainActivity;
 import com.example.bank.Main.activity.TransactionDetailsActivity;
 import com.example.bank.R;
 import com.example.bank.ServerAPI;
+import com.example.bank.User.data.UserDeleteResponse;
 import com.example.bank.UserData;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.JsonObject;
@@ -92,6 +97,26 @@ public class MyPageActivity extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
 
+                } else if(menuId == R.id.menu_delete) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MyPageActivity.this);
+                    builder.setTitle("정말로 계정을 탈퇴하시겠습니까?").setMessage("계속하시려면 \"Delete\"를 클릭해주세요.");
+
+                    builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            deleteAccount();
+                        }
+                    });
+
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(MyPageActivity.this, "Cancel", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
                 }
 
                 return true;
@@ -133,7 +158,6 @@ public class MyPageActivity extends AppCompatActivity {
         call.enqueue(new Callback<LoanListResponse>() {
             @Override
             public void onResponse(Call<LoanListResponse> call, Response<LoanListResponse> response) {
-                Log.d(TAG, "onResponse11: " + response.code());
                 int result = response.code();
 
                 if(result == 200) {
@@ -154,7 +178,29 @@ public class MyPageActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LoanListResponse> call, Throwable t) {
-                Log.d(TAG, "onFailure: ");
+            }
+        });
+    }
+
+    private void deleteAccount() {
+
+        ServerAPI serverAPI = ApiProvider.getInstance().create(ServerAPI.class);
+
+        String bearerUserToken = "Bearer " + UserData.user_token;
+
+        Call<UserDeleteResponse> call = serverAPI.deleteAccount(bearerUserToken, MainActivity.id);
+
+        call.enqueue(new Callback<UserDeleteResponse>() {
+            @Override
+            public void onResponse(Call<UserDeleteResponse> call, Response<UserDeleteResponse> response) {
+                if(response.code() == 200) {
+                    System.exit(0);
+                    android.os.Process.killProcess(android.os.Process.myPid());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserDeleteResponse> call, Throwable t) {
             }
         });
     }
