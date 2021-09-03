@@ -40,6 +40,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="계좌번호 입력"
+        android:textColor="#EEEEEE"
         android:inputType="textPersonName"
         android:textColorHint="#EEEEEE"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,14 +67,16 @@
         android:id="@+id/tv_finish"
         android:layout_width="172dp"
         android:layout_height="60dp"
-        android:text="입력 완료"
         android:gravity="center"
+        android:text="입력 완료"
         android:textColor="#464E8A"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/ib_finish"
         app:layout_constraintEnd_toEndOf="@+id/ib_finish"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/ib_finish"
-        app:layout_constraintTop_toTopOf="@+id/ib_finish" />
+        app:layout_constraintTop_toTopOf="@+id/ib_finish"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView21"
