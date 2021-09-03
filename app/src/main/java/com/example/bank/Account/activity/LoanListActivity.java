@@ -4,16 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.example.bank.ApiProvider;
 import com.example.bank.Account.adapter.LoanListAdapter;
 import com.example.bank.Account.data.LoanListData;
 import com.example.bank.Account.data.LoanListResponse;
+import com.example.bank.Auth.activity.LoginActivity;
+import com.example.bank.Main.activity.MainActivity;
 import com.example.bank.R;
 import com.example.bank.ServerAPI;
+import com.example.bank.User.activity.MyPageActivity;
 import com.example.bank.UserData;
 import com.google.gson.JsonObject;
 
@@ -32,6 +38,8 @@ public class LoanListActivity extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
     LoanListAdapter loanListAdapter;
 
+    ImageButton loanList_ib_back;
+
     RecyclerView rv_loan;
 
     LoanListResponse loanListResponse;
@@ -40,6 +48,14 @@ public class LoanListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_list);
+
+        loanList_ib_back = (ImageButton) findViewById(R.id.loanList_ib_back);
+        loanList_ib_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         rv_loan = (RecyclerView) findViewById(R.id.rv_loan);
 
@@ -95,7 +111,10 @@ public class LoanListActivity extends AppCompatActivity {
 
             Log.d(TAG, "setLoanList: jsonobject" + jsonObject);
 
-            LoanListData loanListData = new LoanListData(setMoney, setInterest, setBDate, setEDate);
+            String cutBDate = setBDate.substring(1, 11);
+            String cutEDate = setEDate.substring(1, 11);
+
+            LoanListData loanListData = new LoanListData(setMoney, setInterest, cutBDate, cutEDate);
             arraylist.add(loanListData);
 
             loanListAdapter.notifyDataSetChanged();
