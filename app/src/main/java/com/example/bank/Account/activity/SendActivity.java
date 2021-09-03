@@ -64,8 +64,10 @@ public class SendActivity extends AppCompatActivity {
             public void onClick(View v) {
                 stMoney = send_et_money.getText().toString();
                 money = Integer.parseInt(stMoney);
-                if(money != 0) {
+                if(money != 0 || !(Integer.toString(money).equals(""))) {
                     startActivity(new Intent(SendActivity.this, SecPasswordActiviity.class));
+                } else {
+                    Toast.makeText(SendActivity.this, "금액을 입력해주세요", Toast.LENGTH_SHORT).show();
                 }
             }
         });

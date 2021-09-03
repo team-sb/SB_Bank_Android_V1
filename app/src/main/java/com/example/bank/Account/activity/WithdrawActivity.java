@@ -51,8 +51,10 @@ public class WithdrawActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 withdrawMoney = Integer.parseInt(withdraw_et_money.getText().toString()) * -1;
-                if(!(withdrawMoney == 0)) {
+                if(!(withdrawMoney == 0 || Integer.toString(withdrawMoney).equals(""))) {
                     startActivity(new Intent(WithdrawActivity.this, SecPasswordActiviity.class));
+                } else {
+                    Toast.makeText(WithdrawActivity.this, "금액을 입력해주세요", Toast.LENGTH_SHORT).show();
                 }
             }
         });
