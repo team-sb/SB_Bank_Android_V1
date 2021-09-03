@@ -67,7 +67,7 @@
             android:layout_marginTop="136dp"
             android:text="Your current balance is"
             android:textColor="#CCCCCC"
-            android:textSize="12dp"
+            android:textSize="18dp"
             app:layout_constraintStart_toStartOf="@+id/ib_menu"
             app:layout_constraintTop_toBottomOf="@+id/ib_menu" />
 
@@ -76,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:text="Account\nnot Found."
             android:textColor="@color/white"
             android:textSize="40dp"
@@ -113,6 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
             android:text="내 정보 보기"
             android:textColor="#8DFFFFFF"
             app:layout_constraintStart_toEndOf="@+id/imageView7"

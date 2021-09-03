@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginBottom="16dp"
-        android:text="Not Account"
+        android:text="No Account"
         android:textColor="@color/white"
         android:textSize="32dp"
         android:textStyle="bold"
