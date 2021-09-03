@@ -33,6 +33,7 @@ public class ApprovalNumberActivity extends AppCompatActivity {
     TextView approvalNumber_tv_check;
     TextView tv_approvalNumber;
 
+    TextView tv_reissuance;
 
     int minute = 30;
     int second = 30;
@@ -41,6 +42,26 @@ public class ApprovalNumberActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approval_number);
+
+        tv_reissuance = (TextView) findViewById(R.id.tv_reissuance);
+        tv_reissuance.setVisibility(View.GONE);
+
+        tv_reissuance.setOnClickListener(new View.OnClickListener() { // 새로고침
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = getIntent();
+                    finish();
+                    overridePendingTransition(0, 0);
+                    startActivity(intent);
+                    overridePendingTransition(0, 0);
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
 
         startTimer();
 
@@ -69,10 +90,17 @@ public class ApprovalNumberActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+
+    }
+
     private void startTimer() {
         TextView tv_second = (TextView) findViewById(R.id.tv_second);
 
-        new CountDownTimer(60000, 1000) {
+        new CountDownTimer(6000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 tv_second.setText("" + millisUntilFinished / 1000);
@@ -80,7 +108,8 @@ public class ApprovalNumberActivity extends AppCompatActivity {
 
             public void onFinish() {
                 tv_second.setText("00");
-                Toast.makeText(ApprovalNumberActivity.this, "유효시간이 만료되어 승인번호가 만료되었습니다.", Toast.LENGTH_SHORT).show();
+
+                tv_reissuance.setVisibility(View.VISIBLE);
             }
 
         }.start();
