@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bank.Account.activity.LoanCheckActivity;
 import com.example.bank.Auth.data.LoginRequest;
 import com.example.bank.Auth.data.LoginResponse;
 import com.example.bank.Main.activity.MainActivity;
@@ -116,7 +117,10 @@ public class LoginActivity extends AppCompatActivity {
                     if(resultCode == 200) {
                         Toast.makeText(LoginActivity.this, username + "님 환영합니다.", Toast.LENGTH_SHORT).show();
                         UserData.user_token = response.body().getAccessToken();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
                     } else if(resultCode == 401) {
                         Toast.makeText(LoginActivity.this, "로그인에 실패하였습니다.\n비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
                     } else if(resultCode == 404) {
