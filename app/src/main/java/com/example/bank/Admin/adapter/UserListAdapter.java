@@ -10,10 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bank.Account.adapter.LoanListAdapter;
-import com.example.bank.Account.data.LoanListData;
 import com.example.bank.Admin.data.UserListData;
-import com.example.bank.AdminUserInfoActivity;
+import com.example.bank.Admin.activity.AdminUserInfoActivity;
 import com.example.bank.R;
 
 import java.util.ArrayList;

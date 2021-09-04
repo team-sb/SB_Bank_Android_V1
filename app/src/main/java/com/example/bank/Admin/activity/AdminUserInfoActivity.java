@@ -1,18 +1,20 @@
-package com.example.bank;
+package com.example.bank.Admin.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bank.Admin.activity.AdminActivity;
 import com.example.bank.Admin.adapter.UserListAdapter;
 import com.example.bank.Admin.data.UserInfoResponse;
+import com.example.bank.ApiProvider;
+import com.example.bank.R;
+import com.example.bank.ServerAPI;
+import com.example.bank.UserData;
 
 import retrofit2.Call;
 import retrofit2.Callback;
