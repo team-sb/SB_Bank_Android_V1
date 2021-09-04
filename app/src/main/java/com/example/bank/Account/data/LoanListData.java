@@ -1,10 +1,10 @@
 package com.example.bank.Account.data;
 
 public class LoanListData {
-    String money;
-    String interest;
-    String borrowedDate;
-    String loanExpirationDate;
+    private String money;
+    private String interest;
+    private String borrowedDate;
+    private String loanExpirationDate;
 
     public LoanListData(String money, String interest, String borrowedDate, String loanExpirationDate) {
         this.money = money;

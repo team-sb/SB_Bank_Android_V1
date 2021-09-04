@@ -1,7 +1,7 @@
 package com.example.bank.Account.data;
 
 public class AccountResponse {
-    String account; // 계좌 번호
+    private String account; // 계좌 번호
 
     public String getAccount() {
         return account;

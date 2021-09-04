@@ -1,7 +1,7 @@
 package com.example.bank.Auth.data;
 
 public class LoginResponse {
-    String accessToken;
+    private String accessToken;
 
     public String getAccessToken() {
         return accessToken;

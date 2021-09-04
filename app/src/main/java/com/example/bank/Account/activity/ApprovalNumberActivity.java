@@ -29,11 +29,11 @@ public class ApprovalNumberActivity extends AppCompatActivity {
 
     private static final String TAG = "ApprovalNumberActivity";
 
-    ImageButton approvalNumber_ib_back;
-    TextView approvalNumber_tv_check;
-    TextView tv_approvalNumber;
+    private ImageButton approvalNumber_ib_back;
+    private TextView approvalNumber_tv_check;
+    private TextView tv_approvalNumber;
 
-    TextView tv_reissuance;
+    private TextView tv_reissuance;
 
     int minute = 30;
     int second = 30;

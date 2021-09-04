@@ -42,18 +42,18 @@ public class TransactionDetailsActivity extends AppCompatActivity {
 
     private static final String TAG = "TransactionDetailsActiv";
 
-    String transactionSelect;
-    TextView tv_transactionDetails;
-    ImageButton transactionDetails_ib_down;
+    private String transactionSelect;
+    private TextView tv_transactionDetails;
+    private ImageButton transactionDetails_ib_down;
 
-    ImageButton transactionDetails_ib_back;
+    private ImageButton transactionDetails_ib_back;
 
-    LinearLayoutManager linearLayoutManager;
+    private LinearLayoutManager linearLayoutManager;
 
-    ArrayList<TransactionDetailsData> transactionList;
+    private ArrayList<TransactionDetailsData> transactionList;
 
-    TransactionDetailsAdapter transactionDetailsAdapter;
-    RecyclerView recyclerView;
+    private TransactionDetailsAdapter transactionDetailsAdapter;
+    private RecyclerView recyclerView;
 
     static String selectedText = "전체";
 

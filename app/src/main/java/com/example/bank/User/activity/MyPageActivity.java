@@ -38,16 +38,16 @@ import retrofit2.Response;
 public class MyPageActivity extends AppCompatActivity {
     private static final String TAG = "MyPageActivity";
 
-    ImageButton myPage_ib_back;
-    ImageButton ib_settings;
+    private ImageButton myPage_ib_back;
+    private ImageButton ib_settings;
 
-    TextView mypage_tv_accountNum;
-    TextView tv_seeLoan;
-    TextView mypage_tv_money;
-    TextView tv_transactions;
-    TextView tv_creditPrice;
+    private TextView mypage_tv_accountNum;
+    private TextView tv_seeLoan;
+    private TextView mypage_tv_money;
+    private TextView tv_transactions;
+    private TextView tv_creditPrice;
 
-    DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
 
     int sumLoanMoney = 0;
 

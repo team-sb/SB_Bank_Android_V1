@@ -1,7 +1,7 @@
 package com.example.bank.Auth.data;
 
 public class RegisterResponse {
-    String message;
+    private String message;
 
     public String getMessage() {
         return message;

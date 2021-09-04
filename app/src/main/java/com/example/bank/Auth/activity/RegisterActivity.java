@@ -23,18 +23,18 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    TextView tv_signIn;
-    EditText et_RegisterName;
-    EditText et_RegisterId;
-    EditText et_RegisterPw;
-    EditText et_RegisterSecPassword;
+    private TextView tv_signIn;
+    private EditText et_RegisterName;
+    private EditText et_RegisterId;
+    private EditText et_RegisterPw;
+    private EditText et_RegisterSecPassword;
 
-    ImageButton ib_Register;
+    private ImageButton ib_Register;
 
-    RetrofitClient retrofitClient;
-    ServerAPI serverAPI;
+    private RetrofitClient retrofitClient;
+    private ServerAPI serverAPI;
 
-    ProgressBar register_progressBar;
+    private ProgressBar register_progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

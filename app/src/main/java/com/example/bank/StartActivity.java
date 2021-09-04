@@ -12,7 +12,7 @@ import com.example.bank.Main.activity.MainActivity;
 
 public class StartActivity extends AppCompatActivity {
 
-    ImageButton ib_startBanking;
+    private ImageButton ib_startBanking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

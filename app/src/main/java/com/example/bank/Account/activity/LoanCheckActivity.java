@@ -13,11 +13,11 @@ import com.example.bank.R;
 
 public class LoanCheckActivity extends AppCompatActivity {
 
-    TextView loan_tv_finish;
-    TextView tv_loanMoney;
-    TextView tv_interest;
-    TextView tv_borrowedDate;
-    TextView tv_loanExpirationDate;
+    private TextView loan_tv_finish;
+    private TextView tv_loanMoney;
+    private TextView tv_interest;
+    private TextView tv_borrowedDate;
+    private TextView tv_loanExpirationDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

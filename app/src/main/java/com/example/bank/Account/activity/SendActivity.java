@@ -26,17 +26,17 @@ import retrofit2.Response;
 
 public class SendActivity extends AppCompatActivity {
     private static final String TAG = "SendActivity";
-    
-    ImageButton send_ib_back;
 
-    ImageButton send_ib_sendMoney;
+    private ImageButton send_ib_back;
 
-    EditText send_et_money;
+    private ImageButton send_ib_sendMoney;
 
-    String stMoney;
+    private EditText send_et_money;
+
+    private String stMoney;
     int money;
 
-    TextView tv_sendAccountNum;
+    private TextView tv_sendAccountNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

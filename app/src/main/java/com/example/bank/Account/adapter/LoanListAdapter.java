@@ -16,8 +16,8 @@ import java.util.ArrayList;
 
 public class LoanListAdapter extends RecyclerView.Adapter<LoanListAdapter.CustomViewHolder>{
 
-    Context Ctx;
-    ArrayList<LoanListData> arraylist;
+    private Context Ctx;
+    private ArrayList<LoanListData> arraylist;
 
     public LoanListAdapter(ArrayList<LoanListData> arraylist, Context Ctx) {
         this.arraylist = arraylist;

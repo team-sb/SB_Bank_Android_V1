@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import java.util.List;
 
 public class UserLoanResponse {
-    List<JsonObject> loans;
+    private List<JsonObject> loans;
 
     public List<JsonObject> getLoans() {
         return loans;

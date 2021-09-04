@@ -3,8 +3,8 @@ package com.example.bank.Account.data;
 import com.google.gson.annotations.SerializedName;
 
 public class SendRequest {
-    int target_account;
-    int money;
+    private int target_account;
+    private int money;
 
     public SendRequest(int target_account, int money) {
         this.target_account = target_account;

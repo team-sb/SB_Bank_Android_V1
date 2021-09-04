@@ -1,7 +1,7 @@
 package com.example.bank.User.data;
 
 public class UserCreditResponse {
-    String creditRating;
+    private String creditRating;
 
     public String getCreditRating() {
         return creditRating;

@@ -22,8 +22,8 @@ public class TransactionDetailsAdapter extends RecyclerView.Adapter<TransactionD
 
     private static final String TAG = "TransactionDetailsAdapt";
 
-    Context Ctx;
-    ArrayList<TransactionDetailsData> transactionList;
+    private Context Ctx;
+    private ArrayList<TransactionDetailsData> transactionList;
     int pos;
 
     public TransactionDetailsAdapter(ArrayList<TransactionDetailsData> transactionList, Context Ctx) {

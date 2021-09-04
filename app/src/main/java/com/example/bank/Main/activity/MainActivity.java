@@ -41,27 +41,27 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
-    TextView tv_price;
-    TextView tv_makeAccount;
-    TextView tv_qrCheck;
-    TextView tv_name;
-    TextView tv_seeInfo;
+    private TextView tv_price;
+    private TextView tv_makeAccount;
+    private TextView tv_qrCheck;
+    private TextView tv_name;
+    private TextView tv_seeInfo;
 
-    ImageButton ib_sendMoney;
-    ImageButton ib_menu;
+    private ImageButton ib_sendMoney;
+    private ImageButton ib_menu;
 
-    DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
 
-    String tempActivityName;
+    private String tempActivityName;
+
+    private Boolean goTransaction = false;
+
+    private Long backKeyPressedTime;
 
     public static String myAccount;
     public static String price;
     public static String id;
     public static String accountNum;
-
-    Boolean goTransaction = false;
-
-    Long backKeyPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -241,7 +241,8 @@ public class MainActivity extends AppCompatActivity {
                     tv_name.setText(response.body().getName());
                 }
                 if (response.code() == 404) {
-                    Toast.makeText(MainActivity.this, "계좌가 존재하지 않습니다.\n우측 상단 \"계좌 생성\" 버튼을 클릭하여 계좌를 생성해주세요.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "계좌가 존재하지 않습니다.\n우측 상단 \"계좌 생성\" 버튼을 클릭하여 계좌를 생성해주세요." +
+                            "\n계좌가 개설되지 않을 경우 서비스 이용기 불가능합니다.", Toast.LENGTH_LONG).show();
                 }
             }
 

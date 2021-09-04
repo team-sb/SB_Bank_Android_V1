@@ -1,10 +1,10 @@
 package com.example.bank.User.data;
 
 public class UserBalanceResponse {
-    String balance;
-    String name;
-    String accountNumber;
-    String id;
+    private String balance;
+    private String name;
+    private String accountNumber;
+    private String id;
 
     public String getId() {
         return id;

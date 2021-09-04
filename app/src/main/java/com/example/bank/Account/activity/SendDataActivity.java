@@ -16,11 +16,11 @@ import java.util.Objects;
 
 public class SendDataActivity extends AppCompatActivity {
 
-    ImageButton sendData_ib_back;
+    private ImageButton sendData_ib_back;
 
-    TextView tv_finish;
+    private TextView tv_finish;
 
-    EditText et_accountNum;
+    private EditText et_accountNum;
 
     public static String accountNum;
 

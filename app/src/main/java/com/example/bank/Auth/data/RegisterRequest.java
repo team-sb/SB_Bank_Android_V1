@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class RegisterRequest {
     @SerializedName("name")
-    String name;
+    private String name;
     @SerializedName("username")
-    String username;
+    private String username;
     @SerializedName("password")
-    String password;
+    private String password;
     @SerializedName("sec_password")
-    String sec_password;
+    private String sec_password;
 
     public RegisterRequest(String name, String username, String password, String sec_password) {
         this.name = name;

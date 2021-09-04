@@ -22,20 +22,20 @@ public class AdminUserInfoActivity extends AppCompatActivity {
 
     private static final String TAG = "AdminUserInfoActivity";
 
-    ImageButton userInfo_ib_back;
+    private ImageButton userInfo_ib_back;
 
-    TextView tv_userInfoName;
-    TextView tv_userInfoUserName;
-    TextView tv_userInfoId;
-    TextView tv_userInfoAuthority;
-    TextView tv_userInfoAccount;
-    TextView tv_userInfoBalance;
+    private TextView tv_userInfoName;
+    private TextView tv_userInfoUserName;
+    private TextView tv_userInfoId;
+    private TextView tv_userInfoAuthority;
+    private TextView tv_userInfoAccount;
+    private TextView tv_userInfoBalance;
 
-    EditText et_editMoney;
+    private EditText et_editMoney;
 
-    TextView tv_editMoney;
+    private TextView tv_editMoney;
 
-    int money;
+    private int money;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -25,9 +25,9 @@ import retrofit2.Response;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
-    ImageButton createAccount_ib_back;
-    TextView tv_check;
-    TextView tv_newAccount;
+    private ImageButton createAccount_ib_back;
+    private TextView tv_check;
+    private TextView tv_newAccount;
 
 
     @Override

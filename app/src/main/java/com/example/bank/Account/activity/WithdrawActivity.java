@@ -23,12 +23,12 @@ import retrofit2.Response;
 
 public class WithdrawActivity extends AppCompatActivity {
 
-    ImageButton withDraw_ib_back;
+    private ImageButton withDraw_ib_back;
 
-    TextView tv_createApoorovalNum;
-    TextView withdraw_tv_cancel;
+    private TextView tv_createApoorovalNum;
+    private TextView withdraw_tv_cancel;
 
-    EditText withdraw_et_money;
+    private EditText withdraw_et_money;
 
     public static int withdrawMoney;
     @Override

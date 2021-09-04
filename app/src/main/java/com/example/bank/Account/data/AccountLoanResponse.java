@@ -6,16 +6,16 @@ import java.util.Date;
 
 public class AccountLoanResponse {
     @SerializedName("money")
-    Integer money;
+    private Integer money;
 
     @SerializedName("interest")
-    double interest;
+    private double interest;
 
     @SerializedName("borrowedDate")
-    String borrowedDate;
+    private String borrowedDate;
 
     @SerializedName("loanExpirationDate")
-    String loanExpirationDate;
+    private String loanExpirationDate;
 
     public Integer getMoney() {
         return money;

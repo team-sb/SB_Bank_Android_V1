@@ -19,8 +19,8 @@ import com.example.bank.R;
 import java.util.ArrayList;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.CustomViewHolder>{
-    Context Ctx;
-    ArrayList<UserListData> arraylist;
+    private Context Ctx;
+    private ArrayList<UserListData> arraylist;
 
     public static String userId;
     public static String name;

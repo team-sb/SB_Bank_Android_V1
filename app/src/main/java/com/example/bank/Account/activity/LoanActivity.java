@@ -25,14 +25,14 @@ import retrofit2.Response;
 public class LoanActivity extends AppCompatActivity {
     
     private static final String TAG = "LoanActivity";
-    
-    ImageButton loan_ib_back;
 
-    EditText et_loanPrice;
+    private ImageButton loan_ib_back;
 
-    TextView tv_applicationLoan;
+    private EditText et_loanPrice;
 
-    String stLoanPrice;
+    private TextView tv_applicationLoan;
+
+    private String stLoanPrice;
 
     public static String loanMoney;
     public static String loanInterest;

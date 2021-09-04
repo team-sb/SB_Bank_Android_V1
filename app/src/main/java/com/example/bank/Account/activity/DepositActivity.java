@@ -24,13 +24,13 @@ import retrofit2.Response;
 public class DepositActivity extends AppCompatActivity {
 
     private static final String TAG = "DepositActivity";
-    
-    ImageButton deposit_ib_back;
 
-    TextView tv_deposit;
-    TextView tv_depositCancel;
+    private ImageButton deposit_ib_back;
 
-    EditText deposit_et_money;
+    private TextView tv_deposit;
+    private TextView tv_depositCancel;
+
+    private EditText deposit_et_money;
 
     public static int depositMoney;
 

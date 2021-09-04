@@ -29,19 +29,19 @@ public class SecPasswordActiviity extends AppCompatActivity {
 
     public static String secPassword;
 
-    ProgressBar secPassword_progressBar;
+    private ProgressBar secPassword_progressBar;
 
-    TextView tv_one;
-    TextView tv_two;
-    TextView tv_three;
-    TextView tv_four;
-    TextView tv_five;
-    TextView tv_six;
-    TextView tv_seven;
-    TextView tv_eight;
-    TextView tv_nine;
-    TextView tv_zero;
-    ImageView ib_suBack;
+    private TextView tv_one;
+    private TextView tv_two;
+    private TextView tv_three;
+    private TextView tv_four;
+    private TextView tv_five;
+    private TextView tv_six;
+    private TextView tv_seven;
+    private TextView tv_eight;
+    private TextView tv_nine;
+    private TextView tv_zero;
+    private ImageView ib_suBack;
 
     ImageView ig_d1;
     ImageView ig_d2;

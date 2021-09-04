@@ -36,22 +36,22 @@ public class AdminActivity extends AppCompatActivity {
 
     private static final String TAG = "AdminActivity";
 
-    ImageButton admin_ib_Back;
+    private ImageButton admin_ib_Back;
 
-    ArrayList<UserListData> arraylist;
-    LinearLayout linearLayout;
-    LinearLayoutManager linearLayoutManager;
+    private ArrayList<UserListData> arraylist;
+    private LinearLayout linearLayout;
+    private LinearLayoutManager linearLayoutManager;
 
-    UserListAdapter userListAdapter;
+    private UserListAdapter userListAdapter;
 
-    RecyclerView rv_admin;
+    private RecyclerView rv_admin;
 
-    UserListResponse userListResponse;
+    private UserListResponse userListResponse;
 
-    String userId;
-    String name;
-    String userName;
-    String userAuthority;
+    private String userId;
+    private String name;
+    private String userName;
+    private String userAuthority;
 
     TextView tv_userMode;
 

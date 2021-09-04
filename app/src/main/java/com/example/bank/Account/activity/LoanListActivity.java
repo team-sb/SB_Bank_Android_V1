@@ -33,16 +33,16 @@ public class LoanListActivity extends AppCompatActivity {
 
     private static final String TAG = "LoanListActivity";
 
-    ArrayList<LoanListData> arraylist;
-    LinearLayout linearLayout;
-    LinearLayoutManager linearLayoutManager;
-    LoanListAdapter loanListAdapter;
+    private ArrayList<LoanListData> arraylist;
+    private LinearLayout linearLayout;
+    private LinearLayoutManager linearLayoutManager;
+    private LoanListAdapter loanListAdapter;
 
-    ImageButton loanList_ib_back;
+    private ImageButton loanList_ib_back;
 
-    RecyclerView rv_loan;
+    private RecyclerView rv_loan;
 
-    LoanListResponse loanListResponse;
+    private LoanListResponse loanListResponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
