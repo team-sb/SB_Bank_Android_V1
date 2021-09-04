@@ -71,18 +71,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/withDraw_ib_back" />
 
-    <ImageButton
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:id="@+id/ib_createNum"
+    <ImageView
+        android:id="@+id/iv_createApoorovalNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/ib_cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/pinkbox" />
+        app:srcCompat="@drawable/blackbox" />
 
     <TextView
         android:id="@+id/tv_createApoorovalNum"
@@ -90,12 +87,12 @@
         android:layout_height="64dp"
         android:gravity="center"
         android:text="승인번호 생성"
-        android:textColor="@color/white"
+        android:textColor="#464E8A"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ib_createNum"
-        app:layout_constraintEnd_toEndOf="@+id/ib_createNum"
-        app:layout_constraintStart_toStartOf="@+id/ib_createNum"
-        app:layout_constraintTop_toTopOf="@+id/ib_createNum" />
+        app:layout_constraintBottom_toBottomOf="@+id/iv_createApoorovalNum"
+        app:layout_constraintEnd_toEndOf="@+id/iv_createApoorovalNum"
+        app:layout_constraintStart_toStartOf="@+id/iv_createApoorovalNum"
+        app:layout_constraintTop_toTopOf="@+id/iv_createApoorovalNum" />
 
     <ImageButton
         android:adjustViewBounds="true"

@@ -72,6 +72,7 @@
         android:layout_width="96dp"
         android:layout_height="26dp"
         android:layout_marginTop="12dp"
+        android:gravity="center"
         android:text="01087573315"
         android:textColor="#EEEEEE"
         android:textSize="16dp"
@@ -80,18 +81,15 @@
         app:layout_constraintStart_toStartOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/send_ib_sendMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/send_ib_cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ib_send" />
+        app:srcCompat="@drawable/blackbox" />
 
     <ImageButton
         android:id="@+id/send_ib_cancel"
@@ -120,18 +118,30 @@
         android:id="@+id/send_et_money"
         android:layout_width="230dp"
         android:layout_height="75dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:gravity="center"
         android:hint="금액 입력"
         android:inputType="number"
-        android:textColorHint="#EEEEEE"
         android:textColor="#EEEEEE"
+        android:textColorHint="#EEEEEE"
         android:textSize="38dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_sendAccountNum" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Money"
+        android:textColor="#464E8A"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/send_ib_sendMoney"
+        app:layout_constraintEnd_toEndOf="@+id/send_ib_sendMoney"
+        app:layout_constraintStart_toStartOf="@+id/send_ib_sendMoney"
+        app:layout_constraintTop_toTopOf="@+id/send_ib_sendMoney" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,13 +3,17 @@ package com.example.bank.Account.activity;
 import android.content.Intent;
 import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.bank.ApiProvider;
 import com.example.bank.Auth.activity.SecPasswordActiviity;
@@ -31,6 +35,8 @@ public class WithdrawActivity extends AppCompatActivity {
     private EditText withdraw_et_money;
 
     public static int withdrawMoney;
+
+    private ImageView iv_createApoorovalNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +71,21 @@ public class WithdrawActivity extends AppCompatActivity {
             public void onClick(View v){
                 finish();
             }
+        });
+
+        iv_createApoorovalNum = (ImageView) findViewById(R.id.iv_createApoorovalNum);
+        withdraw_et_money.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                tv_createApoorovalNum.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.whiteText));
+                iv_createApoorovalNum.setImageResource(R.drawable.pinkbox);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
     }
 

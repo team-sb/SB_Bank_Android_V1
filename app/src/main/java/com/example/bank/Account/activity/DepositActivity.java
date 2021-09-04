@@ -1,13 +1,17 @@
 package com.example.bank.Account.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +35,8 @@ public class DepositActivity extends AppCompatActivity {
     private TextView tv_depositCancel;
 
     private EditText deposit_et_money;
+
+    private ImageView deposit_iv_deposit;
 
     public static int depositMoney;
 
@@ -66,6 +72,21 @@ public class DepositActivity extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
             }
+        });
+
+        deposit_iv_deposit = (ImageView) findViewById(R.id.deposit_iv_deposit);
+        deposit_et_money.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                tv_deposit.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.whiteText));
+                deposit_iv_deposit.setImageResource(R.drawable.pinkbox);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
     }
 

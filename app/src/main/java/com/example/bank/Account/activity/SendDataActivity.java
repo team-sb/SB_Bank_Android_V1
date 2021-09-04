@@ -1,12 +1,16 @@
 package com.example.bank.Account.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.bank.R;
@@ -19,6 +23,7 @@ public class SendDataActivity extends AppCompatActivity {
     private ImageButton sendData_ib_back;
 
     private TextView tv_finish;
+    private ImageView iv_finish;
 
     private EditText et_accountNum;
 
@@ -53,6 +58,20 @@ public class SendDataActivity extends AppCompatActivity {
             }
         });
 
+        iv_finish = (ImageView) findViewById(R.id.iv_finish);
+        et_accountNum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                tv_finish.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.whiteText));
+                iv_finish.setImageResource(R.drawable.pinkbox);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
     }
 
 }
