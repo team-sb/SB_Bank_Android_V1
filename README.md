@@ -96,6 +96,7 @@ SB Project의 은행 서비스 SB Bank입니다.
 
 ---
 
+<img src="https://user-images.githubusercontent.com/80076029/132150441-0a322ade-d1fc-46b2-802e-a026dbc030f8.png" width="180px" height="320px" title="Start" alt="시작"></img>
 <img src="https://user-images.githubusercontent.com/80076029/132149455-351d37fd-42b0-4570-ab79-175c2cf8ff15.png" width="180px" height="320px" title="Login" alt="로그인"></img>
 <img src="https://user-images.githubusercontent.com/80076029/132149475-99698ba4-f8c7-4b45-bc73-c1efb1bde617.png" width="180px" height="320px" title="Register" alt="회원가입"></img>
 <img src="https://user-images.githubusercontent.com/80076029/132149464-3439c684-d672-48c0-acd8-a50f2daac08b.png" width="180px" height="320px" title="Main" alt="메인 페이지"></img>
