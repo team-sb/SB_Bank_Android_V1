@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public static String price;
     public static String id;
     public static String accountNum;
+    public static String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -233,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
                     price = response.body().getBalance();
                     myAccount = response.body().getAccountNumber();
                     id = response.body().getId();
+                    name = response.body().getName();
 
                     tv_price.setText(response.body().getBalance());
                     tv_name.setText(response.body().getName());

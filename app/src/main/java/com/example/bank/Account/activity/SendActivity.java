@@ -58,8 +58,8 @@ public class SendActivity extends AppCompatActivity {
             }
         });
 
-        send_ib_sendMoney = (ImageButton) findViewById(R.id.send_ib_sendMoney);
-        send_ib_sendMoney.setOnClickListener(new View.OnClickListener() {
+        TextView tv_sendMoney = (TextView) findViewById(R.id.tv_sendMoney);
+        tv_sendMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 stMoney = send_et_money.getText().toString();

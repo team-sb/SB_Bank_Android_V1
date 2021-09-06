@@ -133,9 +133,10 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_sendAccountNum" />
 
     <TextView
-        android:id="@+id/textView28"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/tv_sendMoney"
+        android:gravity="center"
+        android:layout_width="169dp"
+        android:layout_height="63dp"
         android:text="Send Money"
         android:textColor="#464E8A"
         android:textSize="16dp"

@@ -52,7 +52,7 @@ public class SendDataActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 accountNum = et_accountNum.getText().toString();
-                if(!Objects.equals(accountNum, "")) {
+                if(!Objects.equals(accountNum, "0")) {
                     startActivity(new Intent(SendDataActivity.this, SendActivity.class));
                 }
             }

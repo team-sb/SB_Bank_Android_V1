@@ -46,6 +46,7 @@ public class MyPageActivity extends AppCompatActivity {
     private TextView mypage_tv_money;
     private TextView tv_transactions;
     private TextView tv_creditPrice;
+    private TextView mypage_tv_name;
 
     private DrawerLayout drawerLayout;
 
@@ -56,6 +57,9 @@ public class MyPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
 
+        mypage_tv_name = (TextView) findViewById(R.id.mypage_tv_name);
+        mypage_tv_name.setText("" + MainActivity.name);
+        
         if(!(MainActivity.myAccount.isEmpty())) {
             mypage_tv_money = (TextView) findViewById(R.id.mypage_tv_money);
             mypage_tv_money.setText(MainActivity.price);
