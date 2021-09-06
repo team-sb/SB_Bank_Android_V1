@@ -57,7 +57,8 @@ SB Project의 은행 서비스 SB Bank입니다.
 ---
 
 * Android Studio @4.2.2
-* intelliJ
+* Figma
+* PhotoShop CC
 * PostMan
 
 
