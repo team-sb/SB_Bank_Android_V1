@@ -4,7 +4,7 @@ Team Project
 
 * email address : sh007100@naver.com
 * Demo Video : 
-* development date : 2021.08.13
+* development date : 2021.09.04
 * Backend code : https://github.com/softpeanut/SB_Bank_Backend
 
   
